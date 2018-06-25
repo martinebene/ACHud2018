@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/lib/com.mebene.ACHud"
+    xmlns:app2="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_floating_material_dark"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tV_ruta_huds"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_gravity="top"
+            android:paddingLeft="10dp"
+            android:textSize="@dimen/abc_text_size_small_material" />
+
+        <ListView
+            android:id="@+id/lst_archivos_esquemas"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_gravity="top"
+            android:layout_marginBottom="25dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="0.5"
+            android:background="@color/background_material_light"
+            android:choiceMode="singleChoice"
+            android:divider="@color/background_floating_material_dark"
+            android:fadeScrollbars="false"
+            android:listSelector="@color/dim_foreground_disabled_material_light"
+            android:scrollbarThumbVertical="@drawable/my_scrollbar"
+            android:scrollbarTrackVertical="@color/dim_foreground_material_dark" />
+
+        <ImageView
+            android:id="@+id/imageViewHuds"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="10dp"
+            android:layout_weight="0.5"
+            android:padding="20dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:gravity="bottom"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/ibEditHud"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:background="@mipmap/ic_icono_bsckground_unselected"
+            android:src="@mipmap/ic_action_edit" />
+
+
+        <ImageButton
+            android:id="@+id/ibDeleteHud"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:background="@mipmap/ic_icono_bsckground_unselected"
+            android:src="@mipmap/ic_action_cancel" />
+
+        <ImageButton
+            android:id="@+id/ibCopyHud"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:background="@mipmap/ic_icono_bsckground_unselected"
+            android:src="@mipmap/ic_action_copy" />
+
+        <ImageButton
+            android:id="@+id/ibAyudaInterfaceHuds"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_weight="1"
+            android:adjustViewBounds="true"
+            android:background="@mipmap/ic_icono_bsckground_unselected"
+            android:src="@mipmap/ic_action_help" />
+
+    </LinearLayout>
+    </LinearLayout>

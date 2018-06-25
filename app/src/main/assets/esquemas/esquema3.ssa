@@ -1,0 +1,35 @@
+[Script Info]
+; This is a Sub Station Alpha v4 script.
+; For Sub Station Alpha info and downloads,
+; go to http://www.eswat.demon.co.uk/
+; or email kotus@eswat.demon.co.uk
+Title: Neon Genesis Evangelion - Episodio 26 (castellano neutro)
+Original Script: RoRo
+Script Updated By: versión 2.8.01
+ScriptType: v4.00
+Collisions: Normal
+PlayResY: 600
+PlayDepth: 0
+Timer: 100,0000
+
+[V4 Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, TertiaryColour, BackColour, Bold, Italic, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, AlphaLevel, Encoding
+Style: DefaultVCD,Arial,28,11861244,11861244,11861244,-2147483640,-1,0,1,1,2,2,30,30,30,0,0
+Style: TITLEblack,Dutch766 BT,96,2039583,2039583,2039583,15134448,-1,0,1,1,0,10,65,65,30,0,0
+Style: TITLEgordo,Dutch766 BT,96,15791348,15791348,15791348,0,-1,0,1,1,0,10,65,65,30,0,0
+Style: cartel,Dutch766 BT,96,15791348,15791348,15791348,0,-1,0,1,1,0,10,65,65,30,0,0
+Style: subTITLEblack,Arial,30,2039583,2039583,2039583,16777215,-1,0,1,1,2,2,65,65,65,0,0
+Style: televVCD,Arial,26,16711373,16711373,16711373,0,-1,0,1,1,1,6,65,65,30,0,0
+
+[Events]
+Format: Marked, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
+Dialogue: Marked=0,0:00:01.18,0:00:06.85,DefaultVCD,NTP,0000,0000,0000,,{\pos(400,570)}Como un Ángel sin misericordia
+Dialogue: Marked=0,0:00:07.07,0:00:14.40,DefaultVCD,NTP,0000,0000,0000,,{\pos(400,570)}Tú, muchacho, te convertirás en un mito.
+Dialogue: Marked=0,0:00:22.91,0:00:25.80,DefaultVCD,NTP,0000,0000,0000,,{\pos(400,570)}Una brisa fresca azul como el mar
+Dialogue: Marked=0,0:00:26.15,0:00:29.40,DefaultVCD,NTP,0000,0000,0000,,{\pos(400,570)}que toca la puerta de tu alma.
+Dialogue: Marked=0,0:00:29.68,0:00:33.22,DefaultVCD,NTP,0000,0000,0000,,{\pos(400,570)}Tú aún no lo sientes,\Nsimplemente me miras
+Dialogue: Marked=0,0:00:33.38,0:00:37.42,DefaultVCD,NTP,0000,0000,0000,,{\pos(400,570)}sonriéndome con serenidad.
+Dialogue: Marked=0,0:00:37.65,0:00:40.50,DefaultVCD,NTP,0000,0000,0000,,{\pos(400,570)}Una sensación que crece en tu interior,
+Dialogue: Marked=0,0:00:40.80,0:00:44.35,DefaultVCD,NTP,0000,0000,0000,,{\pos(400,570)}y también tus ansias de saber qué es.
+Dialogue: Marked=0,0:00:44.62,0:00:48.07,DefaultVCD,NTP,0000,0000,0000,,{\pos(400,570)}Aún no puedes ver\Nel camino que te depara el Destino
+Dialogue: Marked=0,0:00:48.27,0:00:51.40,DefaultVCD,NTP,0000,0000,0000,,{\pos(400,570)}con tan inocentes ojos.

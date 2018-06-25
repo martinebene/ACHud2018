@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Esquema>
+    <Extension>smi</Extension>
+    <Delay>0</Delay>
+    <IntervaloRef>1000</IntervaloRef>
+    <Header><![CDATA[<SAMI>
+<HEAD>
+<TITLE>SAMI Example</TITLE>
+
+<SAMIParam>
+  Media {cheap44.wav}
+  Metrics {time:ms;}
+  Spec {MSFT:1.0;}
+</SAMIParam>
+
+<STYLE TYPE="text/css">
+<!--
+  P { font-family: Arial; font-weight: normal; color: blue; background-color: black; text-align: center; }
+  #Source {color: red; background-color: blue; font-family: Courier; font-size: 12pt; font-weight: normal; text-align: left; }
+  .ENUSCC {Name: English; lang: en-US; color: red; margin-left: 30pt; margin-right: 30pt;}
+-->
+</STYLE>
+</HEAD>
+<BODY>
+]]>
+    </Header>
+    <IntroSub>op</IntroSub>
+    <MedSub><![CDATA[<SYNC Start={T0_SSS_ABS}>
+        <P Class=ENUSCC>Cr: {CR_HH_MED}:{CR_mm_MED}:{CR_ss_MED},{CR_SSS_MED}</P>
+        ]]>
+    </MedSub>
+    <Footer><![CDATA[
+</BODY>
+</SAMI>
+    ]]>
+    </Footer>
+</Esquema>

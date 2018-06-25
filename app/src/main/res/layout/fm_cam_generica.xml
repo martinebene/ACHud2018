@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/lib/com.mebene.ACHud"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/tV_Status"
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:id="@+id/eT_Consola"
+            android:background="@color/background_floating_material_light"
+            android:textColor="@color/texto_obscuro"
+            android:textSize="@dimen/abc_text_size_small_material"
+            android:scrollHorizontally="false"
+            android:clickable="false"
+            android:isScrollContainer="true"
+            android:layout_margin="10dp"
+            android:focusable="false" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/ibRec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:background="@mipmap/ic_icono_bsckground_unselected"
+                android:src="@mipmap/ic_action_record" />
+
+
+            <ImageButton
+                android:id="@+id/ibStop"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:background="@mipmap/ic_icono_bsckground_unselected"
+                android:src="@mipmap/ic_action_playback_stop" />
+
+            <ImageButton
+                android:id="@+id/ibSyncro"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:background="@mipmap/ic_icono_bsckground_unselected"
+                android:src="@mipmap/ic_action_reload" />
+
+            <ImageButton
+                android:id="@+id/ibAyudaInterface"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical|center_horizontal"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:background="@mipmap/ic_icono_bsckground_unselected"
+                android:src="@mipmap/ic_action_help" />
+
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

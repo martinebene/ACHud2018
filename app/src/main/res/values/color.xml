@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="transparent">#00000000</color>
+    <color name="selector2pressed">#848484</color>
+    <color name="selector2normal">#585858</color>
+    <color name="fondo_claro">#848484</color>
+    <color name="fondo_medio">#585858</color>
+    <color name="fondo_obscuro">#2E2E2E</color>
+    <color name="turquesa">#2ECCFA</color>
+    <color name="turquesa_claro">#58D3F7</color>
+    <color name="turquesa_obscuro">#44a9c7</color>
+    <color name="blanco">#ffffff</color>
+    <color name="texto_clarito"> #E6E6E6</color>
+    <color name="texto_obscuro">#2e2e2e</color>
+    <color name="texto_destacado"> #ff0000</color>
+    <color name="azul">#08088A</color>
+    <color name="rojo"> #ff0000</color>
+
+</resources>

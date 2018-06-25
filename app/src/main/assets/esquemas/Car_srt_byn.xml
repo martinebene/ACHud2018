@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Esquema>
+    <Extension>srt</Extension>
+    <Delay>0</Delay>
+    <IntervaloRef>0</IntervaloRef>
+    <Header>
+    </Header>
+    <IntroSub Time="5000">{NRO_LINE}
+{T0_HH_MED}:{T0_mm_MED}:{T0_ss_MED},{T0_SSS_MED} --> {T1_HH_MED}:{T1_mm_MED}:{T1_ss_MED},{T1_SSS_MED}
+<![CDATA[{\an5}Creado con <b><font color="#00ff00">ACHud</font></b>
+ 
+]]>
+    </IntroSub>
+    <MedSub>{NRO_LINE}
+{T0_HH_MED}:{T0_mm_MED}:{T0_ss_MED},{T0_SSS_MED} --> {T1_HH_MED}:{T1_mm_MED}:{T1_ss_MED},{T1_SSS_MED}
+<![CDATA[{\an4}<b>Cr:</b> {CR_HH_MED}:{CR_mm_MED}:{CR_ss_MED},{CR_SSS_MED}
+ 
+  
+  
+  
+<b>Velocidad:</b> {VEL}<i>{VEL_UNI}</i>
+<b>Vel Max:</b> {VEL_MAX}<i>{VEL_UNI}</i>
+  
+<b>Acel.:</b>
+<b>X:</b>{ACEL_X}
+<b>Y:</b>{ACEL_Y}
+<b>Z:</b>{ACEL_Z}
+
+]]>
+    </MedSub>
+</Esquema>

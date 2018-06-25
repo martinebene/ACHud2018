@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="USFV100.xsl"?>
+
+<USFSubtitles version="1.0">
+<metadata>
+  <title>A USF file containing only SVG</title>
+  <author>
+    <name>unmei</name>
+    <email>unmei@matroska.org</email>
+  </author>
+  <language code="eng">English</language>
+  <date>2004-04-24</date>
+</metadata>
+<svgdefs>
+  <defs>
+    <linearGradient id="black-white_1" x1="0%" y1="0%" x2="0%" y2="33.3333%" spreadMethod="reflect" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#000"/>
+      <stop offset="100%" stop-color="#FFF"/>
+    </linearGradient>
+    <linearGradient id="black-white" x1="0%" y1="0%" x2="100%" y2="0%" spreadMethod="pad" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#000"/>
+      <stop offset="100%" stop-color="#FFF"/>
+    </linearGradient>
+  </defs>
+</svgdefs>
+<subtitles>
+  <subtitle start="00:00:02.000" stop="00:00:08.000">
+    <svg horizontal-margin="10%" vertical-margin="4%" alignment="TopRight" scale-x="500" scale-y="500">
+      <rect x="102" y="30" width="130" height="81" fill="none" strike="url(#black-white)" stroke-width="5" stroke-opacity="0.75"/>
+      <ellipse cx="117" cy="445.5" rx="54" ry="41.5" fill="none" stroke="url(#black-white_1)" stroke-width="8"/>
+      <polygon points="448.78,103.659 373.171,137.805 443.902,196.341" stroke="none" stroke-width="0" fill="url(#black-white)"/>
+    </svg>
+  </subtitle>
+</subtitles>
+</USFSubtitles>

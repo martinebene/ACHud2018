@@ -1,0 +1,9 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="padding_bt_control">11dp</dimen>
+    <dimen name="margen_bt_control">12dp</dimen>
+    <dimen name="texto_gigante">45dp</dimen>
+    <integer name="texto_gigante_altura">45</integer>
+</resources>

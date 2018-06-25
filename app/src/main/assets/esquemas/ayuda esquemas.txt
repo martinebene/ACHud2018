@@ -1,0 +1,7 @@
+/*
+{VEL}: Velocidad en la unidad de medida predefinida en la configuracion de la aplicacion
+
+
+
+
+*/

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <!--
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="horizontal"
+    android:padding="8dp"
+    android:focusable="false"
+    android:background="@drawable/list_selector2"
+    android:id="@+id/fila_hijo">
+
+    <ImageView
+        android:id="@+id/img_hijo"
+        android:layout_width="35dip"
+        android:layout_height="35dip"
+        android:layout_marginLeft="20dip"
+        android:layout_gravity="center_vertical"/>
+
+    <TextView
+        android:id="@+id/lblListItem"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_vertical"
+        android:layout_toRightOf="@id/img_hijo"
+        android:textSize="14dip"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:textColor="#000000"
+        android:focusable="false"
+        android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft" />
+</RelativeLayout>
+
+    -->
+
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="horizontal"
+    android:padding="8dp"
+    android:focusable="false"
+    android:background="@drawable/list_selector2"
+    android:id="@+id/fila_hijo">
+
+    <TableRow>
+
+        <ImageView
+            android:id="@+id/img_hijo"
+            android:layout_width="35dip"
+            android:layout_height="35dip"
+            android:layout_marginLeft="45dip"
+            android:layout_gravity="center_vertical" />
+        <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:paddingTop="0dip"
+            android:stretchColumns="1" >
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/lblListItem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dip"
+                    android:layout_weight="1"
+                    android:layout_toRightOf="@id/img_hijo"
+                    android:textSize="14dip"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:textColor="@color/texto_clarito"
+                    android:textStyle="italic"
+                    android:focusable="false"
+                     />
+            </TableRow>
+
+        </TableLayout>
+    </TableRow>
+</TableLayout>
