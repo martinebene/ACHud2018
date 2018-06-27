@@ -1,6 +1,8 @@
 package fi.unpsjb.mebene.achud3;
 
 import android.Manifest;
+import android.app.Notification;
+import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -18,6 +20,7 @@ import android.os.Environment;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
@@ -54,6 +57,18 @@ public class ServicioAdquisicion3 extends Service implements SensorEventListener
     public void onCreate() {
         super.onCreate();
 
+        Intent notificationIntent = new Intent(this, MainActivity.class);
+
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,
+                notificationIntent, 0);
+
+        Notification notification = new NotificationCompat.Builder(this, "ACHud")
+                .setSmallIcon(R.mipmap.logo)
+                .setContentTitle("ACHud")
+                .setContentText("Capturando Datos...")
+                .setContentIntent(pendingIntent).build();
+
+        startForeground(1337, notification);
 
         asyncMedicion = new AsyncMedicion();
 
