@@ -52,7 +52,7 @@ public class Fm_datos extends Fragment {
 
     private List<String> item_datos = null;
     private List<String> item_esquemas = null;
-    ImageButton ibProcesar, ibInfoData, ibDeleteDato, ibRenameData, ibIrmDown, ibIrmUp;
+    ImageButton ibProcesar, ibInfoData, ibDeleteDato, ibRenameData, ibIrmDown, ibIrmUp, ibAyudaInterfaceDatos;
     AcCore acCore;
     ListView listaArchivosDatos;
     ArrayAdapter<String> fileListAdapter;
@@ -605,6 +605,25 @@ public class Fm_datos extends Fragment {
             public void onClick(View v) {
                 irm = irm + irm_step;
                 et_irm.setText(String.format("%03d", irm));
+            }
+        });
+
+        //************************************************************************************************************************
+        ibAyudaInterfaceDatos = (ImageButton) getView().findViewById(R.id.ibAyudaInterfaceDatos);
+        ibAyudaInterfaceDatos.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle("Ayuda");
+                LayoutInflater inflater = (LayoutInflater)getActivity().getSystemService (Context.LAYOUT_INFLATER_SERVICE);
+                View vi = inflater.inflate(R.layout.ayuda_datos, null);
+                builder.setView(vi);
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog alert = builder.create();
+                alert.show();
             }
         });
     }

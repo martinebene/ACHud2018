@@ -17,16 +17,16 @@
             android:layout_height="80dp"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            app:srcCompat="@mipmap/ic_action_record" />
+            app:srcCompat="@mipmap/ic_action_process_start" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:paddingLeft="10dp"
-            android:text="Iniciar la adquisicion de datos" />
+            android:text="Generar archivo de subtitulado" />
     </LinearLayout>
 
     <LinearLayout
@@ -36,21 +36,21 @@
         android:paddingLeft="20dp">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imageView2"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            app:srcCompat="@mipmap/ic_action_playback_stop" />
+            app:srcCompat="@mipmap/ic_action_edit" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:paddingLeft="10dp"
-            android:text="Detener la adquisicion de datos" />
+            android:text="Editar nombre de archivo de datos" />
     </LinearLayout>
 
     <LinearLayout
@@ -60,21 +60,21 @@
         android:paddingLeft="20dp">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imageView3"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            app:srcCompat="@mipmap/ic_action_reload" />
+            app:srcCompat="@mipmap/ic_action_cancel" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
             android:paddingLeft="10dp"
-            android:text="Refrescar la pantalla de adquisicion" />
+            android:text="Eliminar archivo de datos" />
     </LinearLayout>
 
     <LinearLayout
@@ -84,7 +84,31 @@
         android:paddingLeft="20dp">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imageView4"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_vertical|center_horizontal|center"
+            android:layout_weight="1"
+            app:srcCompat="@mipmap/ic_action_info" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:paddingLeft="10dp"
+            android:text="Informacion de archivo de datos" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        android:paddingLeft="20dp">
+
+        <ImageView
+            android:id="@+id/imageView5"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_gravity="center_vertical|center_horizontal|center"
@@ -92,7 +116,7 @@
             app:srcCompat="@mipmap/ic_drawer" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/textView5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -100,5 +124,12 @@
             android:paddingLeft="10dp"
             android:text="Menu principal" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="Esquemas, IRM y Delay, ver en la ayuda del menu principal" />
 
 </LinearLayout>

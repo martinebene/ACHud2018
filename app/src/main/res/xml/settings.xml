@@ -3,7 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <PreferenceCategory android:title="@string/settings_titulo_categoria_generales">
-
     </PreferenceCategory>
     <ListPreference
         android:defaultValue="0"
@@ -11,8 +10,14 @@
         android:entries="@array/entradasUnidadesDeVelocidad"
         android:entryValues="@array/valoresUnidadesDeVelocidad"
         android:key="list_preference_unidades" />
-    <PreferenceCategory android:title="@string/settings_titulo_categoria_sensores">
+    <ListPreference
+        android:defaultValue="0"
+        android:title="@string/s_unidades_de_distancia"
+        android:entries="@array/entradasUnidadesDeDistancia"
+        android:entryValues="@array/valoresUnidadesDeDistancia"
+        android:key="list_preference_unidades" />
 
+    <PreferenceCategory android:title="@string/settings_titulo_categoria_sensores">
     </PreferenceCategory>
     <CheckBoxPreference
         android:defaultValue="true"
@@ -20,16 +25,12 @@
         android:key="check_box_preference_velocidad" />
     <CheckBoxPreference
         android:defaultValue="true"
+        android:title="@string/odometro"
+        android:key="check_box_preference_odometro" />
+    <CheckBoxPreference
+        android:defaultValue="true"
         android:title="@string/s_acelerometro"
         android:key="check_box_preference_acelerometro" />
-    <CheckBoxPreference
-        android:defaultValue="true"
-        android:title="@string/s_giroscopo"
-        android:key="check_box_preference_giro" />
-    <CheckBoxPreference
-        android:defaultValue="true"
-        android:title="@string/s_magnetico"
-        android:key="check_box_preference_magnetico" />
     <CheckBoxPreference
         android:defaultValue="true"
         android:title="@string/s_cronometro"

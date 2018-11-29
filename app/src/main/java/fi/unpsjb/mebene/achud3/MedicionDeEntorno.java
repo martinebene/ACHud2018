@@ -28,8 +28,9 @@ public class MedicionDeEntorno {
     Clima clima;
     Cronometro cronometro;
     Velocidad velocidad;
+    Odometro odometro;
     SharedPreferences sharedPref;
-    public static final int KMH = 0, MPH = 1, MS = 2, MKM = 3, MM = 4;
+    public static final int KMH = 0, MPH = 1, MS = 2, MKM = 3, MM = 4, KM=5, MILL=6, M=7;
     Context l_context;
     public String[] ultimaMedicion=null;
 
@@ -53,6 +54,8 @@ public class MedicionDeEntorno {
         VEL_MAX,
         VEL_UNI,
         VEL_REP,
+        ODO,
+        ODO_UNI,
         ALT,
         ACEL_X,
         ACEL_MA_AB_X,
@@ -93,6 +96,7 @@ public class MedicionDeEntorno {
 //        Log.i("Tag444", "Shared: " +  sharedPref.getString("list_preference_unidades", String.valueOf(KMH)));
 
         velocidad = new Velocidad(l_context, false, false, Integer.parseInt(sharedPref.getString("list_preference_unidades", String.valueOf(KMH))));
+        odometro = new Odometro(l_context, false, false, Integer.parseInt(sharedPref.getString("list_preference_unidades", String.valueOf(KM))));
        //  velocidad = new Velocidad(l_context, false, false, 0);
         aceleracion = new Aceleracion(false, false);
         giro = new Giro(false, false);
@@ -116,6 +120,12 @@ public class MedicionDeEntorno {
             salida = salida +
                     "Cron.: "+datos[EDA.CR_HH_MED.ordinal()]+":"+datos[EDA.CR_mm_MED.ordinal()]+":"+datos[EDA.CR_ss_MED.ordinal()]+","+datos[EDA.CR_SSS_MED.ordinal()]+"\n\n";
         };
+
+        if (odometro.activo) {
+            salida = salida +
+                    "Recorrido: "+datos[EDA.ODO.ordinal()]+" "+datos[EDA.ODO_UNI.ordinal()]+ "\n\n";
+        };
+
         if (aceleracion.activo) {
             salida = salida +
                     "Acel. X:\t" + datos[EDA.ACEL_X.ordinal()] + "\tmax.:" + datos[EDA.ACEL_MA_AB_X.ordinal()] + "\n" +
@@ -146,9 +156,15 @@ public class MedicionDeEntorno {
             salida = salida +
                     "Tiempo de medicion: "+datos[EDA.CR_HH_MED.ordinal()]+":"+datos[EDA.CR_mm_MED.ordinal()]+":"+datos[EDA.CR_ss_MED.ordinal()]+","+datos[EDA.CR_SSS_MED.ordinal()]+"\n\n";
         };
+
+        if (odometro.activo) {
+            salida = salida +
+                    "Recorrido: "+datos[EDA.ODO.ordinal()]+" "+datos[EDA.ODO_UNI.ordinal()]+ "\n\n";
+        };
+
         if (aceleracion.activo) {
             salida = salida +
-                    "Aceleraciones maximas:\n"+
+                    "Aceleraciones Maximas:\n"+
                     "X:\t" + datos[EDA.ACEL_MA_AB_X.ordinal()] + "\n" +
                     "Y:\t" + datos[EDA.ACEL_MA_AB_Y.ordinal()] + "\n" +
                     "Z:\t" + datos[EDA.ACEL_MA_AB_Z.ordinal()] + "\n\n";
@@ -205,6 +221,11 @@ public class MedicionDeEntorno {
             salida[EDA.VEL_MAX.ordinal()] = velocidad.getVelMax();
             salida[EDA.VEL_UNI.ordinal()] = velocidad.getUnidad();
             salida[EDA.VEL_REP.ordinal()] = Integer.toString(velocidad.getRepeticion());
+        }
+
+        if (odometro.activo) {
+            salida[EDA.ODO.ordinal()] = odometro.getOdo();
+            salida[EDA.ODO_UNI.ordinal()] = odometro.getUnidad();
         }
 
         if (aceleracion.activo) {
@@ -650,6 +671,66 @@ class Velocidad {
     @Override
     public String toString() {
         return this.getVel();
+    }
+
+    public String getUnidad() {
+        return strUnidad;
+    }
+}
+
+//**********************************************************************************************************************//
+class Odometro {
+
+    public boolean activo, disponible;
+    public double recorrido;
+    int unidad;
+    public String strUnidad;
+
+    Odometro(Context l_context, boolean ldisponible, boolean lactivo, int l_Unidad) {
+        activo = lactivo;
+        disponible = ldisponible;
+        unidad = l_Unidad;
+        String[] unidadesDeDistancia = l_context.getResources().getStringArray(R.array.entradasUnidadesDeDistancia);
+        strUnidad = unidadesDeDistancia[unidad];
+        recorrido=0;
+    }
+
+
+    public void addOdometro (float offset) {
+
+        Log.i("Aviso2", "Entre en addOdo con recorrido: " + offset );
+
+        switch (unidad) {
+            case MedicionDeEntorno.KM:
+                recorrido = recorrido + (offset / 1000 );
+                Log.e("Aviso2", "Entre en km: " + unidad + " y str: " + strUnidad);break;
+            case MedicionDeEntorno.MILL:
+                recorrido = recorrido + (offset / 1609.344 );
+                Log.e("Aviso2", "Entre en mp: " + unidad + " y str: " + strUnidad);break;
+            case MedicionDeEntorno.M:
+                recorrido = recorrido + offset;
+                Log.e("Aviso2", "Entre en m: " + unidad + " y str: " + strUnidad);break;
+
+        }
+
+    }
+
+    public String getOdo() {
+        /*Formatter fmt = new Formatter(new StringBuilder());
+        fmt.format("%4.1f", velocidad);
+        String strCurrentSpeed = fmt.toString();
+        strCurrentSpeed = strCurrentSpeed.replace(' ', '0');
+
+        return strCurrentSpeed;*/
+        DecimalFormat df = new DecimalFormat("000.0");
+        return df.format(recorrido);
+    }
+
+
+
+    @Override
+    public String toString() {
+        return this.getOdo();
     }
 
     public String getUnidad() {

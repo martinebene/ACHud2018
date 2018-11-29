@@ -21,8 +21,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import fi.unpsjb.mebene.achud3.MainActivity;
-
 /**
  * Created by miguelmorales on 17/4/15.
  */
@@ -133,8 +131,7 @@ public class Fm_cam_generica extends Fragment {
 
         ibSyncro.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                eT_Consola.setText(ServicioAdquisicion3.listarSensores(getActivity()));
-                //eT_Consola.setText("caca");
+                eT_Consola.setText("");
             }
         });
 
@@ -160,10 +157,14 @@ public class Fm_cam_generica extends Fragment {
                 }*/
                 //eT_Consola.setText(/*result.toString()*/"pedo");
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                builder.setTitle("Detalles");
-                builder.setMessage(
+                builder.setTitle("Ayuda");
+                /*builder.setMessage(
                         "AYUDA\n\n"
-                                +"Aqui una descripcion con dibujo de cada boton" );
+                                +"Aqui una descripcion con dibujo de cada boton" );*/
+
+                LayoutInflater inflater = (LayoutInflater)getActivity().getSystemService (Context.LAYOUT_INFLATER_SERVICE);
+                View vi = inflater.inflate(R.layout.ayuda_datos, null);
+                builder.setView(vi);
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
@@ -171,6 +172,8 @@ public class Fm_cam_generica extends Fragment {
                 });
                 AlertDialog alert = builder.create();
                 alert.show();
+
+
             }
         });
     }

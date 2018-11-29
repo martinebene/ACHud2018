@@ -43,6 +43,7 @@ public class ServicioAdquisicion3 extends Service implements SensorEventListener
     public Context lcontext = this;
     SharedPreferences sharedPref;
     public long t0, t1;
+    Location ubicacionAnterior;
     //private final IBinder mBinder = new LocalBinder();
 
 
@@ -137,6 +138,7 @@ public class ServicioAdquisicion3 extends Service implements SensorEventListener
 
 
         medicion.cronometro.activo = true;
+        ubicacionAnterior = null;
 
         LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -158,19 +160,10 @@ public class ServicioAdquisicion3 extends Service implements SensorEventListener
         this.updateSpeed(null);
         medicion.velocidad.disponible = true; //meter en una condicion si gps disponible
         medicion.velocidad.activo = sharedPref.getBoolean("check_box_preference_velocidad",true);;
-
+        medicion.odometro.activo = sharedPref.getBoolean("check_box_preference_odometro",true);;
 
         List<Sensor> listSensors;
 
-        listSensors = sensorManager.getSensorList(Sensor.TYPE_MAGNETIC_FIELD);
-        if(!listSensors.isEmpty()){
-            Sensor magneticSensor = listSensors.get(0);
-            sensorManager.registerListener(this, magneticSensor, SensorManager.SENSOR_DELAY_UI);
-            medicion.campoMagnetico.disponible = true;
-            medicion.campoMagnetico.activo = sharedPref.getBoolean("check_box_preference_magnetico",true);
-        }else{
-            medicion.campoMagnetico.disponible = false;
-        }
 
         listSensors = sensorManager.getSensorList(Sensor.TYPE_ACCELEROMETER);
         if(!listSensors.isEmpty()){
@@ -180,16 +173,6 @@ public class ServicioAdquisicion3 extends Service implements SensorEventListener
             medicion.aceleracion.activo = sharedPref.getBoolean("check_box_preference_acelerometro",true);
         }else{
             medicion.aceleracion.disponible = false;
-        }
-
-        listSensors = sensorManager.getSensorList(Sensor.TYPE_GYROSCOPE);
-        if(!listSensors.isEmpty()){
-            Sensor gyroscopeSensor = listSensors.get(0);
-            sensorManager.registerListener(this, gyroscopeSensor, SensorManager.SENSOR_DELAY_UI);
-            medicion.giro.disponible = true;
-            medicion.giro.activo = sharedPref.getBoolean("check_box_preference_giro",true);
-        }else{
-            medicion.giro.disponible = false;
         }
 
 
@@ -249,9 +232,20 @@ public class ServicioAdquisicion3 extends Service implements SensorEventListener
 
     @Override
     public void onLocationChanged(Location location) {
+        float offset=0;
+
         if (location != null)
         {
             this.updateSpeed(location);
+            if (ubicacionAnterior == null){
+                ubicacionAnterior=location;
+            }
+            offset=location.distanceTo(ubicacionAnterior);
+            if (offset>10){
+                medicion.odometro.addOdometro(offset);
+                ubicacionAnterior = location;
+            }
+
         }
     }
 
@@ -289,6 +283,7 @@ public class ServicioAdquisicion3 extends Service implements SensorEventListener
         medicion.velocidad.resetRepeticion();
 
     }
+
 
 /*
     public String getTimeFormatedFromMillis(long millis, String formato)
@@ -387,16 +382,6 @@ public class ServicioAdquisicion3 extends Service implements SensorEventListener
             //String[] bufferDatos[] = null;
             //Aca armar buffer e interpolar la vel
 
-/*
-            for(int n=0; ;n++{
-
-            }
-*/
-
-
-
-
-
             if ((bufferInterpolado = bufferInterpolacion.add(medicion.getIntervaloMedicion())) != null){
 
                 for (int n = 0; n < (bufferInterpolado.size()); n++){
@@ -422,8 +407,6 @@ public class ServicioAdquisicion3 extends Service implements SensorEventListener
             } else {
 
             }
-
-
 
             Intent intent = new Intent(BROADCAST_MEDICION);
             intent.putExtra("medicion", medicion.toDisplay());
