@@ -377,7 +377,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case 4:
                 Log.e("Aviso", "Entre en dv1 con pos: " + position);
-                fragment = new Fm_2();
+                fragment = new Fm_manual_de_uso();
                 mDrawerTitle = getResources().getString(R.string.menu_ayuda);
                 mTitle = getResources().getString(R.string.s_menu_manual);
                 mDrawerExpandableList.clearChoices();

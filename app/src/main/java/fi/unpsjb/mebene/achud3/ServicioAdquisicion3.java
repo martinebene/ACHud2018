@@ -241,6 +241,8 @@ public class ServicioAdquisicion3 extends Service implements SensorEventListener
                 ubicacionAnterior=location;
             }
             offset=location.distanceTo(ubicacionAnterior);
+            Log.e("odo", "dit offset = "+offset);
+
             if (offset>10){
                 medicion.odometro.addOdometro(offset);
                 ubicacionAnterior = location;

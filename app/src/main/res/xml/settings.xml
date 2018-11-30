@@ -9,13 +9,13 @@
         android:title="@string/s_unidades_de_velocidad"
         android:entries="@array/entradasUnidadesDeVelocidad"
         android:entryValues="@array/valoresUnidadesDeVelocidad"
-        android:key="list_preference_unidades" />
+        android:key="list_preference_unidades_velocidad" />
     <ListPreference
         android:defaultValue="0"
         android:title="@string/s_unidades_de_distancia"
         android:entries="@array/entradasUnidadesDeDistancia"
         android:entryValues="@array/valoresUnidadesDeDistancia"
-        android:key="list_preference_unidades" />
+        android:key="list_preference_unidades_distancia" />
 
     <PreferenceCategory android:title="@string/settings_titulo_categoria_sensores">
     </PreferenceCategory>

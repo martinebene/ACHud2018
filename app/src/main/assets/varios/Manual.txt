@@ -1,0 +1,39 @@
+MANUAL DE USO ACHUD
+
+AcHud (Action Cam Head Up Display) es una aplicación que permite capturar las variables físicas de un vehículo en movimiento equipado con una cámara de video, y a través de los sensores del dispositivo móvil que se transporta en el mismo, generar un archivo de subtítulos que trasladara esos datos al video. La misma aplicación facilita herramientas para la sincronización del subtitulado con el video capturado, y la configuración de los distintos tipos de esquemas de variables para superponer en la pantalla.
+
+
+CAPTURA DE DATOS
+
+La captura de los datos es independiente del post procesamiento para generar el archivo de subtitulado, por ende el mismo conjunto de datos que se almacena en un archivo formato csv (que puede ser utilizado por otras aplicaciones compatibles) se puede utilizar varias veces para generar distintas configuraciones a presentar en el video respectivo.
+Para capturar datos, basta con iniciar la grabación de video en la cámara que capturara las imágenes sobre las que se superpondra el HUD, colocar el dispositivo móvil frente a esta y presionar el botón de INICIAR, este paso es indispensable para facilitar la sincronización de los datos con el video. Luego ubicar el dispositivo firmemente en el mismo vehículo que la cámara e iniciar el recorrido a medir. Una vez finalizado el recorrido, utilizar el botón DETENER, para finalizar la captura y luego detener la grabación de la cámara de video.
+
+
+GESTIÓN DE LOS DATOS
+
+Todo archivo de datos almacena las lecturas de todos los sensores disponibles en el dispositivo móvil y configuradas en la aplicación. El nombre del archivo de datos representa el día y la hora de la captura de los datos. La aplicación en la sección DATOS admite, abrir, renombrar, eliminar, y ver las propiedades de cada archivo.
+
+
+ESQUEMAS HUD
+
+Los esquemas, son archivos XML que indican la forma en que los datos del archivo de datos, se transforman en sucesiones de líneas de un archivo de subtitulado, determinando qué variables junto con su ubicación en la pantalla se plasmarán en el video. La aplicación cuenta con varios esquemas predeterminados, y admite la creación de esquemas propios siguiendo la documentación proporcionada en el archivo “instrucciones.txt” que se encuentra dentro de la carpeta “Esquemas” del directorio raíz de la aplicación. En la pantalla de ESQUEMAS se posibilita, renombrar, ver, editar, crear copia, eliminar y restaurar los esquemas predeterminados.
+
+
+
+GENERACIÓN DEL ARCHIVO DE SUBTITULADO
+
+Desde la sección DATOS de la aplicación, debemos seguir los siguientes pasos:
+Seleccionar el archivo de datos a procesar de la lista de datos capturados.
+Seleccionar el esquema de representación de la lista de esquemas, de acuerdo a la necesidad.
+Indicar el delay respecto del inicio de la grabación de video y el inicio de la captura de datos, para ello debe reproducirse el video y tomar nota del tiempo que indica el reproductor al momento de que observamos en la pantalla del dispositivo móvil filmado la palabra SYNC.
+Indicar el IRM (Intervalo de Refresco Mínimo), este valor en milisegundos representa el tiempo que transcurre entre cada lectura de los sensores, los esquemas también pueden indicar un valor de IRM, para lo cual al momento de procesar se aplicará el que sea mayor. A menor IRM aumenta la precisión del archivo generado y requiere mayor potencia de hardware para reproducir el subtítulo generado. Para utilizar el menor IRM posible o el que indique el esquema si fuera el caso, indicar el valor 000 para este campo.
+Oprimir el botón PROCESAR
+Al cumplimentarse los pasos se genera el archivo de subtitulado listo para reproducirse junto con el video en cualquier reproductor compatible, o para utilizar aplicaciones de edición de video para incorporar el mismo de forma permanente a cada fotograma.
+
+
+RECOMENDACIONES Y SOLUCIÓN DE PROBLEMAS
+
+En caso de interrupciones y/o reproducción entrecortada del video junto con el subtítulo generado, se recomienda aumentar el valor de IRM o utilizar una aplicacion de edicion de video para incorporar el subtitulado de forma permanente a cada fotograma. La reproducción de un video de alta resolución junto con un tasa de refresco de subtítulo alta, generan mucha exigencia al hardware, subir el IRM la reduce, e incorporar el subtitulado al video elimina la exigencia en lo que subtitulado se refiere.
+En caso de que se interrumpa la captura de datos del GPS en cierto momento, chequear que el sistema de ahorro de batería del dispositivo móvil no suspenda la ejecución de la aplicación, desde la configuración del mismo puede otorgarse permiso a la aplicación ACHud para evitar la optimización de batería, consulte el manual de su dispositivo. Mantener la pantalla activa puede solucionar el problema.
+En caso de que al momento de reproducir el subtítulo no respete los colores y/o la disposición de los elementos en pantalla descritas por el esquema seleccionado, asegúrese de que el reproductor utilizado es compatible con las etiquetas de estilo de SRT, o con el formato del archivo de subtitulado del esquema seleccionado, o creado por el usuario. Lo mismo si se utiliza una aplicación de edición de video para incorporar el subtitulado de forma permanente a cada fotograma.
+Se recomienda para sincronizar de forma más precisa el video con el respectivo subtítulo, utilizar reproducción cuadro a cuadro para identificar el tiempo de inicio de la captura tal lo indicado en la presente documentación.

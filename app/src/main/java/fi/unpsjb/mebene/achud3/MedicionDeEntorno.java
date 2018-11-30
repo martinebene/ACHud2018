@@ -30,7 +30,7 @@ public class MedicionDeEntorno {
     Velocidad velocidad;
     Odometro odometro;
     SharedPreferences sharedPref;
-    public static final int KMH = 0, MPH = 1, MS = 2, MKM = 3, MM = 4, KM=5, MILL=6, M=7;
+    public static final int KMH = 0, MPH = 1, MS = 2, MKM = 3, MM = 4, KM=0, MILL=1, M=2;
     Context l_context;
     public String[] ultimaMedicion=null;
 
@@ -95,8 +95,8 @@ public class MedicionDeEntorno {
 
 //        Log.i("Tag444", "Shared: " +  sharedPref.getString("list_preference_unidades", String.valueOf(KMH)));
 
-        velocidad = new Velocidad(l_context, false, false, Integer.parseInt(sharedPref.getString("list_preference_unidades", String.valueOf(KMH))));
-        odometro = new Odometro(l_context, false, false, Integer.parseInt(sharedPref.getString("list_preference_unidades", String.valueOf(KM))));
+        velocidad = new Velocidad(l_context, false, false, Integer.parseInt(sharedPref.getString("list_preference_unidades_velocidad", String.valueOf(KMH))));
+        odometro = new Odometro(l_context, false, false, Integer.parseInt(sharedPref.getString("list_preference_unidades_distancia", String.valueOf(KM))));
        //  velocidad = new Velocidad(l_context, false, false, 0);
         aceleracion = new Aceleracion(false, false);
         giro = new Giro(false, false);
@@ -698,7 +698,7 @@ class Odometro {
 
     public void addOdometro (float offset) {
 
-        Log.i("Aviso2", "Entre en addOdo con recorrido: " + offset );
+        Log.i("Aviso2", "Entre en addOdo con recorrido: " + offset +" y unidad: "+ unidad);
 
         switch (unidad) {
             case MedicionDeEntorno.KM:
@@ -710,7 +710,9 @@ class Odometro {
             case MedicionDeEntorno.M:
                 recorrido = recorrido + offset;
                 Log.e("Aviso2", "Entre en m: " + unidad + " y str: " + strUnidad);break;
-
+            default:
+                recorrido = recorrido + offset;
+                Log.e("Aviso2", "Entre en m: " + unidad + " y str: " + strUnidad);break;
         }
 
     }
