@@ -1,39 +1,41 @@
 MANUAL DE USO ACHUD
 
-AcHud (Action Cam Head Up Display) es una aplicaciÛn que permite capturar las variables fÌsicas de un vehÌculo en movimiento equipado con una c·mara de video, y a travÈs de los sensores del dispositivo mÛvil que se transporta en el mismo, generar un archivo de subtÌtulos que trasladara esos datos al video. La misma aplicaciÛn facilita herramientas para la sincronizaciÛn del subtitulado con el video capturado, y la configuraciÛn de los distintos tipos de esquemas de variables para superponer en la pantalla.
+AcHud (Action Cam Head Up Display) es una aplicaci√≥n que permite capturar las variables f√≠sicas de un veh√≠culo en movimiento equipado con una c√°mara de video, y a trav√©s de los sensores del dispositivo m√≥vil que se transporta en el mismo, generar un archivo de subt√≠tulos que trasladara esos datos al video. La misma aplicaci√≥n facilita herramientas para la sincronizaci√≥n del subtitulado con el video capturado, y la configuraci√≥n de los distintos tipos de esquemas de variables para superponer en la pantalla.
 
 
 CAPTURA DE DATOS
 
 La captura de los datos es independiente del post procesamiento para generar el archivo de subtitulado, por ende el mismo conjunto de datos que se almacena en un archivo formato csv (que puede ser utilizado por otras aplicaciones compatibles) se puede utilizar varias veces para generar distintas configuraciones a presentar en el video respectivo.
-Para capturar datos, basta con iniciar la grabaciÛn de video en la c·mara que capturara las im·genes sobre las que se superpondra el HUD, colocar el dispositivo mÛvil frente a esta y presionar el botÛn de INICIAR, este paso es indispensable para facilitar la sincronizaciÛn de los datos con el video. Luego ubicar el dispositivo firmemente en el mismo vehÌculo que la c·mara e iniciar el recorrido a medir. Una vez finalizado el recorrido, utilizar el botÛn DETENER, para finalizar la captura y luego detener la grabaciÛn de la c·mara de video.
+Para capturar datos, basta con iniciar la grabaci√≥n de video en la c√°mara que capturara las im√°genes sobre las que se superpondra el HUD, colocar el dispositivo m√≥vil frente a esta y presionar el bot√≥n de INICIAR, este paso es indispensable para facilitar la sincronizaci√≥n de los datos con el video. Luego ubicar el dispositivo firmemente en el mismo veh√≠culo que la c√°mara e iniciar el recorrido a medir. Una vez finalizado el recorrido, utilizar el bot√≥n DETENER, para finalizar la captura y luego detener la grabaci√≥n de la c√°mara de video.
 
 
-GESTI”N DE LOS DATOS
+GESTI√ìN DE LOS DATOS
 
-Todo archivo de datos almacena las lecturas de todos los sensores disponibles en el dispositivo mÛvil y configuradas en la aplicaciÛn. El nombre del archivo de datos representa el dÌa y la hora de la captura de los datos. La aplicaciÛn en la secciÛn DATOS admite, abrir, renombrar, eliminar, y ver las propiedades de cada archivo.
+Todo archivo de datos almacena las lecturas de todos los sensores disponibles en el dispositivo m√≥vil y configuradas en la aplicaci√≥n. El nombre del archivo de datos representa el d√≠a y la hora de la captura de los datos. La aplicaci√≥n en la secci√≥n DATOS admite, abrir, renombrar, eliminar, y ver las propiedades de cada archivo.
 
 
 ESQUEMAS HUD
 
-Los esquemas, son archivos XML que indican la forma en que los datos del archivo de datos, se transforman en sucesiones de lÌneas de un archivo de subtitulado, determinando quÈ variables junto con su ubicaciÛn en la pantalla se plasmar·n en el video. La aplicaciÛn cuenta con varios esquemas predeterminados, y admite la creaciÛn de esquemas propios siguiendo la documentaciÛn proporcionada en el archivo ìinstrucciones.txtî que se encuentra dentro de la carpeta ìEsquemasî del directorio raÌz de la aplicaciÛn. En la pantalla de ESQUEMAS se posibilita, renombrar, ver, editar, crear copia, eliminar y restaurar los esquemas predeterminados.
+Los esquemas, son archivos XML que indican la forma en que los datos del archivo de datos, se transforman en sucesiones de l√≠neas de un archivo de subtitulado, determinando qu√© variables junto con su ubicaci√≥n en la pantalla se plasmar√°n en el video. La aplicaci√≥n cuenta con varios esquemas predeterminados, y admite la creaci√≥n de esquemas propios siguiendo la documentaci√≥n proporcionada en el archivo ‚Äúinstrucciones.txt‚Äù que se encuentra dentro de la carpeta ‚ÄúEsquemas‚Äù del directorio ra√≠z de la aplicaci√≥n. En la pantalla de ESQUEMAS se posibilita, renombrar, ver, editar, crear copia, eliminar y restaurar los esquemas predeterminados.
 
 
 
-GENERACI”N DEL ARCHIVO DE SUBTITULADO
+GENERACI√ìN DEL ARCHIVO DE SUBTITULADO
 
-Desde la secciÛn DATOS de la aplicaciÛn, debemos seguir los siguientes pasos:
+Desde la secci√≥n DATOS de la aplicaci√≥n, debemos seguir los siguientes pasos:
 Seleccionar el archivo de datos a procesar de la lista de datos capturados.
-Seleccionar el esquema de representaciÛn de la lista de esquemas, de acuerdo a la necesidad.
-Indicar el delay respecto del inicio de la grabaciÛn de video y el inicio de la captura de datos, para ello debe reproducirse el video y tomar nota del tiempo que indica el reproductor al momento de que observamos en la pantalla del dispositivo mÛvil filmado la palabra SYNC.
-Indicar el IRM (Intervalo de Refresco MÌnimo), este valor en milisegundos representa el tiempo que transcurre entre cada lectura de los sensores, los esquemas tambiÈn pueden indicar un valor de IRM, para lo cual al momento de procesar se aplicar· el que sea mayor. A menor IRM aumenta la precisiÛn del archivo generado y requiere mayor potencia de hardware para reproducir el subtÌtulo generado. Para utilizar el menor IRM posible o el que indique el esquema si fuera el caso, indicar el valor 000 para este campo.
-Oprimir el botÛn PROCESAR
-Al cumplimentarse los pasos se genera el archivo de subtitulado listo para reproducirse junto con el video en cualquier reproductor compatible, o para utilizar aplicaciones de ediciÛn de video para incorporar el mismo de forma permanente a cada fotograma.
+Seleccionar el esquema de representaci√≥n de la lista de esquemas, de acuerdo a la necesidad.
+Indicar el delay respecto del inicio de la grabaci√≥n de video y el inicio de la captura de datos, para ello debe reproducirse el video y tomar nota del tiempo que indica el reproductor al momento de que observamos en la pantalla del dispositivo m√≥vil filmado la palabra SYNC.
+Indicar el IRM (Intervalo de Refresco M√≠nimo), este valor en milisegundos representa el tiempo que transcurre entre cada lectura de los sensores, los esquemas tambi√©n pueden indicar un valor de IRM, para lo cual al momento de procesar se aplicar√° el que sea mayor. A menor IRM aumenta la precisi√≥n del archivo generado y requiere mayor potencia de hardware para reproducir el subt√≠tulo generado. Para utilizar el menor IRM posible o el que indique el esquema si fuera el caso, indicar el valor 000 para este campo.
+Oprimir el bot√≥n PROCESAR
+Al cumplimentarse los pasos se genera el archivo de subtitulado listo para reproducirse junto con el video en cualquier reproductor compatible, o para utilizar aplicaciones de edici√≥n de video para incorporar el mismo de forma permanente a cada fotograma.
 
 
-RECOMENDACIONES Y SOLUCI”N DE PROBLEMAS
+RECOMENDACIONES Y SOLUCI√ìN DE PROBLEMAS
 
-En caso de interrupciones y/o reproducciÛn entrecortada del video junto con el subtÌtulo generado, se recomienda aumentar el valor de IRM o utilizar una aplicacion de edicion de video para incorporar el subtitulado de forma permanente a cada fotograma. La reproducciÛn de un video de alta resoluciÛn junto con un tasa de refresco de subtÌtulo alta, generan mucha exigencia al hardware, subir el IRM la reduce, e incorporar el subtitulado al video elimina la exigencia en lo que subtitulado se refiere.
-En caso de que se interrumpa la captura de datos del GPS en cierto momento, chequear que el sistema de ahorro de baterÌa del dispositivo mÛvil no suspenda la ejecuciÛn de la aplicaciÛn, desde la configuraciÛn del mismo puede otorgarse permiso a la aplicaciÛn ACHud para evitar la optimizaciÛn de baterÌa, consulte el manual de su dispositivo. Mantener la pantalla activa puede solucionar el problema.
-En caso de que al momento de reproducir el subtÌtulo no respete los colores y/o la disposiciÛn de los elementos en pantalla descritas por el esquema seleccionado, aseg˙rese de que el reproductor utilizado es compatible con las etiquetas de estilo de SRT, o con el formato del archivo de subtitulado del esquema seleccionado, o creado por el usuario. Lo mismo si se utiliza una aplicaciÛn de ediciÛn de video para incorporar el subtitulado de forma permanente a cada fotograma.
-Se recomienda para sincronizar de forma m·s precisa el video con el respectivo subtÌtulo, utilizar reproducciÛn cuadro a cuadro para identificar el tiempo de inicio de la captura tal lo indicado en la presente documentaciÛn.
+En caso de interrupciones y/o reproducci√≥n entrecortada del video junto con el subt√≠tulo generado, se recomienda aumentar el valor de IRM o utilizar una aplicacion de edicion de video para incorporar el subtitulado de forma permanente a cada fotograma. La reproducci√≥n de un video de alta resoluci√≥n junto con un tasa de refresco de subt√≠tulo alta, generan mucha exigencia al hardware, subir el IRM la reduce, e incorporar el subtitulado al video elimina la exigencia en lo que subtitulado se refiere.
+En caso de que se interrumpa la captura de datos del GPS en cierto momento, chequear que el sistema de ahorro de bater√≠a del dispositivo m√≥vil no suspenda la ejecuci√≥n de la aplicaci√≥n, desde la configuraci√≥n del mismo puede otorgarse permiso a la aplicaci√≥n ACHud para evitar la optimizaci√≥n de bater√≠a, consulte el manual de su dispositivo. Mantener la pantalla activa puede solucionar el problema.
+En caso de que al momento de reproducir el subt√≠tulo no respete los colores y/o la disposici√≥n de los elementos en pantalla descritas por el esquema seleccionado, aseg√∫rese de que el reproductor utilizado es compatible con las etiquetas de estilo de SRT, o con el formato del archivo de subtitulado del esquema seleccionado, o creado por el usuario. Lo mismo si se utiliza una aplicaci√≥n de edici√≥n de video para incorporar el subtitulado de forma permanente a cada fotograma.
+Se recomienda para sincronizar de forma m√°s precisa el video con el respectivo subt√≠tulo, utilizar reproducci√≥n cuadro a cuadro para identificar el tiempo de inicio de la captura tal lo indicado en la presente documentaci√≥n.
+
+

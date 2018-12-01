@@ -217,12 +217,6 @@ public class MainActivity extends AppCompatActivity {
                                 displayView2(parent, 3, 1);
                                 Log.e("Aviso", "El Grupo es: " + grup_pos + " y el hijo es: " + child_pos);
                                 break;
-                            case 2:
-                                displayView1(6);
-                                displayView2(parent, 3, 2);
-                                Log.e("Aviso", "El Grupo es: " + grup_pos + " y el hijo es: " + child_pos);
-                                break;
-
                             default:
                                 break;
                         }
@@ -272,7 +266,6 @@ public class MainActivity extends AppCompatActivity {
 
         List<String> s_menu_ayuda = new ArrayList<String>();
         s_menu_ayuda.add( getResources().getString(R.string.s_menu_manual));
-        s_menu_ayuda.add( getResources().getString(R.string.s_menu_soporte));
         s_menu_ayuda.add(getResources().getString(R.string.s_menu_acerca_de));
 
 
@@ -388,18 +381,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case 5:
                 Log.e("Aviso", "Entre en dv1 con pos: " + position);
-                fragment = new Fm_2();
-                mDrawerTitle = getResources().getString(R.string.menu_ayuda);
-                mTitle = getResources().getString(R.string.s_menu_soporte);
-                mDrawerExpandableList.clearChoices();
-                mDrawerExpandableList.setItemChecked(4, true);
-                for (int i = 0; i < childCount; i++) {
-                    if (i != 4) {mDrawerExpandableList.setItemChecked(i, false); }
-                }
-                break;
-            case 6:
-                Log.e("Aviso", "Entre en dv1 con pos: " + position);
-                fragment = new Fm_2();
+                fragment = new Fm_acerca_de();
                 mDrawerTitle = getResources().getString(R.string.menu_ayuda);
                 mTitle = getResources().getString(R.string.s_menu_acerca_de);
                 mDrawerExpandableList.clearChoices();

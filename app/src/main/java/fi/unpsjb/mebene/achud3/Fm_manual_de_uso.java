@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.app.Fragment;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
@@ -21,7 +23,7 @@ import java.io.InputStreamReader;
 public class Fm_manual_de_uso extends Fragment {
 
     private EditText eT_manual;
-    private StringBuilder text = new StringBuilder();
+    private StringBuilder text;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,13 +41,13 @@ public class Fm_manual_de_uso extends Fragment {
         super.onResume();
 
         eT_manual = (EditText) getView().findViewById(R.id.editText_manual);
-
+        text = new StringBuilder();
 
         BufferedReader reader = null;
 
         try {
             reader = new BufferedReader(
-                    new InputStreamReader(getActivity().getAssets().open("Manual.txt")));
+                    new InputStreamReader(getActivity().getAssets().open("varios"+ File.separator+"Manual.txt")));
 
             // do reading, usually loop until end of file reading
             String mLine;
@@ -65,7 +67,7 @@ public class Fm_manual_de_uso extends Fragment {
                 }
             }
         }
-
-            eT_manual.setText((CharSequence) text);
+        eT_manual.setText((CharSequence) "");
+        eT_manual.setText((CharSequence) text);
     }
 }
