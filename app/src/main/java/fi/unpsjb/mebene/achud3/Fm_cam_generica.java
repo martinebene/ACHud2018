@@ -163,7 +163,7 @@ public class Fm_cam_generica extends Fragment {
                                 +"Aqui una descripcion con dibujo de cada boton" );*/
 
                 LayoutInflater inflater = (LayoutInflater)getActivity().getSystemService (Context.LAYOUT_INFLATER_SERVICE);
-                View vi = inflater.inflate(R.layout.ayuda_datos, null);
+                View vi = inflater.inflate(R.layout.ayuda_captura, null);
                 builder.setView(vi);
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {

@@ -4,7 +4,7 @@
     <string name="not_available_text">N/A</string>
     <string name="drawer_open">Menú abierto</string>
     <string name="drawer_close">Menú cerrado</string>
-    <string name="menu_captura">Captura</string>
+    <string name="menu_captura">Captura de Datos</string>
     <string name="s_menu_camara_generica">Adquisicion de los datos</string>
     <string name="s_menu_gopro">GoPro 2bp, 3, 3+</string>
     <string name="ss_menu_crtl_sinc_auto">Control  y Sincro. Auto.</string>

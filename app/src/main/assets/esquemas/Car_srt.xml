@@ -44,7 +44,7 @@
 {T0_HH_MED}:{T0_mm_MED}:{T0_ss_MED},{T0_SSS_MED} --> {T1_HH_MED}:{T1_mm_MED}:{T1_ss_MED},{T1_SSS_MED}
 <![CDATA[{\an4}<b>Cr:</b> {CR_HH_MED}:{CR_mm_MED}:{CR_ss_MED},{CR_SSS_MED}
  
-  
+<b>Odometro:</b> <font color="#00ff00">{ODO}</font><i>{ODO_UNI}</i>
   
   
 <b>Velocidad:</b> <font color="#00ff00">{VEL}</font><i>{VEL_UNI}</i>

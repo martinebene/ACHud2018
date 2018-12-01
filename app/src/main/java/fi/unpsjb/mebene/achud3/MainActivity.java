@@ -2,8 +2,10 @@ package fi.unpsjb.mebene.achud3;
 
 import android.Manifest;
 import android.annotation.TargetApi;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.os.Build;
@@ -316,6 +318,72 @@ public class MainActivity extends AppCompatActivity {
         mDrawerExpandableList.setChoiceMode(ExpandableListView.CHOICE_MODE_MULTIPLE);
         int childCount = mDrawerExpandableList.getChildCount();
 
+
+
+
+        if ((tengoPermisoSD && tengoPermisoGPS)) {
+
+                Log.e("Aviso", "tengo los permisos: sd: " +tengoPermisoSD +" gps:"+tengoPermisoGPS);
+
+        } else {
+            Log.e("Aviso", "no se si tengo los permisos: sd: " +tengoPermisoSD +" gps:"+tengoPermisoGPS);
+
+            if (ContextCompat.checkSelfPermission(this,
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    != PackageManager.PERMISSION_GRANTED) {
+
+                Log.e("Aviso", " No tenia permiso de Escribir SD1");
+
+                if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                        Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+
+                } else {
+
+                    ActivityCompat.requestPermissions(this,
+                            new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                            MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE);
+
+                }
+            } else {
+                Log.e("Aviso", " SI tenia permiso de Escribir SD1");
+                tengoPermisoSD = true;
+            }
+
+            if (ContextCompat.checkSelfPermission(this,
+                    Manifest.permission.ACCESS_FINE_LOCATION)
+                    != PackageManager.PERMISSION_GRANTED) {
+
+                Log.e("Aviso", " No tenia permiso GPS1");
+
+                if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                        Manifest.permission.ACCESS_FINE_LOCATION)) {
+
+                } else {
+
+                    ActivityCompat.requestPermissions(this,
+                            new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
+                            MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
+
+                }
+            } else {
+                Log.e("Aviso", " SI tenia permiso GPS1");
+                tengoPermisoGPS = true;
+            }/*
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+*/
+        }
+
+
+
+
+
+
+
+
         switch (position) {
             case 0:
                 Log.e("Aviso", "Entre en dv1 con pos: " + position);
@@ -413,56 +481,17 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 Log.e("Aviso", "Error cuando se crea el fragment");
             }
-        } else {
-
-
-            if (ContextCompat.checkSelfPermission(this,
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                    != PackageManager.PERMISSION_GRANTED) {
-
-                Log.e("Aviso", " No tenia permiso de Escribir SD1");
-
-                if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
-
-                } else {
-
-                    ActivityCompat.requestPermissions(this,
-                            new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},
-                            MY_PERMISSIONS_REQUEST_WRITE_EXTERNAL_STORAGE);
-
+        }else{
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("PERMISOS");
+            builder.setMessage("Para poder utilizar la aplicacion debera conceder los permisos solicitados, reiniciar y aceptar los permisos");
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
                 }
-            } else {
-                Log.e("Aviso", " SI tenia permiso de Escribir SD1");
-                tengoPermisoSD = true;
-            }
-
-            if (ContextCompat.checkSelfPermission(this,
-                    Manifest.permission.ACCESS_FINE_LOCATION)
-                    != PackageManager.PERMISSION_GRANTED) {
-
-                Log.e("Aviso", " No tenia permiso GPS1");
-
-                if (ActivityCompat.shouldShowRequestPermissionRationale(this,
-                        Manifest.permission.ACCESS_FINE_LOCATION)) {
-
-                } else {
-
-                    ActivityCompat.requestPermissions(this,
-                            new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
-                            MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION);
-
-                }
-            } else {
-                Log.e("Aviso", " SI tenia permiso GPS1");
-                tengoPermisoGPS = true;
-            }/*
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-*/
+            });
+            AlertDialog alert = builder.create();
+            alert.show();
         }
 
     }

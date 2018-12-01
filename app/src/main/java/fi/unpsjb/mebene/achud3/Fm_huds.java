@@ -40,7 +40,7 @@ public class Fm_huds extends Fragment {
 
 
     private List<String> item_esquemas = null;
-    ImageButton ibEditar, ibDeleteHud, ibCopyHud;
+    ImageButton ibEditar, ibDeleteHud, ibCopyHud, ibAyudaInterfaceHuds;
     AcCore acCore;
     ListView listaArchivosEsquemas;
     ArrayAdapter<String> fileListAdaptrer;
@@ -281,9 +281,32 @@ public class Fm_huds extends Fragment {
 
 
 
+//********************************************************************************************************************************
+        ibAyudaInterfaceHuds = (ImageButton) getView().findViewById(R.id.ibAyudaInterfaceHuds);
+        ibAyudaInterfaceHuds.setOnClickListener(new View.OnClickListener() {
+        public void onClick(View v) {
+            AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+            builder.setTitle("Ayuda");
+            LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View vi = inflater.inflate(R.layout.ayuda_huds, null);
+            builder.setView(vi);
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            AlertDialog alert = builder.create();
+            alert.show();
+        }
+        });
+
+
+
 
 
     }
+
+
 
 //********************************************************************************************************************************
     @Override

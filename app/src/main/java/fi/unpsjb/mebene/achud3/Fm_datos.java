@@ -13,6 +13,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.StrictMode;
 import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -632,8 +633,11 @@ public class Fm_datos extends Fragment {
 public void shareCreatedFile(final File f_out_result){
     //private void shareCreatedFile(File f_out, File f_datos, EsquemaHUD esquema, int delay, int irm_gui){
     //final File f_out_result=acCore.procesarDatos(f_out, f_datos, esquema, delay, irm_gui);
-
+    Log.i("tag4444", "Se ingerso a compartir");
     if(f_out_result != null){
+
+        StrictMode.VmPolicy.Builder builderSM = new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(builderSM.build());
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Archivo HUD creado con exito");
@@ -648,8 +652,11 @@ public void shareCreatedFile(final File f_out_result){
                     intentShareFile.putExtra(Intent.EXTRA_SUBJECT,"Compartido por AC_HUD: \"" + f_out_result.getName()+"\"");
                     intentShareFile.putExtra(Intent.EXTRA_TEXT, "Archivo creado con AC_HUD, mas informacion en www.achud.com.ar");
 
+                    Log.i("tag4444", "Se creo intent en compartir");
+
                     try {
                         startActivity(Intent.createChooser(intentShareFile, "Share File"));
+                        Log.i("tag4444", "Se lanzo intent en compartir");
                     }
                     catch (ActivityNotFoundException e) {
                         Toast.makeText(getActivity(),"No Application Available to View File: " + e, Toast.LENGTH_SHORT).show();
