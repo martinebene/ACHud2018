@@ -1,7 +1,59 @@
-/*
-{VEL}: Velocidad en la unidad de medida predefinida en la configuracion de la aplicacion
+Listado de etiquetas de variables disponibles para esquemas
 
 
+       
+T0_SSS_ABS:
+T0_HH_MED:
+T0_mm_MED:
+T0_ss_MED:
+T0_SSS_MED:
+T1_HH_MED:
+T1_mm_MED:
+T1_ss_MED:
+T1_SSS_MED:
+NRO_MED:
+CR_HH_MED:
+CR_mm_MED:
+CR_ss_MED:
+CR_SSS_MED:
+VEL:
+VEL_MAX:
+VEL_UNI:
+VEL_REP:
+ODO:
+ODO_UNI:
+ALT:
+ACEL_X:
+ACEL_MA_AB_X:
+ACEL_MA_X:
+ACEL_MI_X:
+ACEL_Y:
+ACEL_MA_AB_Y:
+ACEL_MA_Y:
+ACEL_MI_Y:
+ACEL_Z:
+ACEL_MA_AB_Z:
+ACEL_MA_Z:
+ACEL_MI_Z
 
 
-*/
+Estructura xml de archivo de esquema AC_HUD:
+
+<Esquema>
+    <Extension></Extension>
+    <Delay></Delay>
+    <IntervaloRef></IntervaloRef>
+    <GrafVal></GrafVal>
+    <GrafVal>
+        <InputTag></InputTag>
+        <OutputTag></OutputTag>
+        <MaxVal></MaxVal>
+        <MinVal></MinVal>
+        <NLineGraf></NLineGraf>
+        <PChar></PChar>
+        <NChar></NChar>
+    </GrafVal>
+    <Header></Header>
+    <IntroSub Time=""></IntroSub>
+    <MedSub></MedSub>
+</Esquema>

@@ -1,5 +1,0 @@
-{NRO_MED}
-{T0_HH_MED}:{T0_mm_MED}:{T0_ss_MED},{T0_SSS_MED} --> {T1_HH_MED}:{T1_mm_MED}:{T1_ss_MED},{T1_SSS_MED}
-Cr: {CR_HH_MED}:{CR_mm_MED}:{CR_ss_MED},{CR_SSS_MED} Vel: {VEL} {VEL_UNI} Vel max: {VEL_MAX} {VEL_UNI}
-Acel X: {ACEL_X} Acel max X: {ACEL_MA_AB_X}
-
