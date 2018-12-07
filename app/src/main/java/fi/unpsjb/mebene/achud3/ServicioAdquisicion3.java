@@ -412,8 +412,13 @@ public class ServicioAdquisicion3 extends Service implements SensorEventListener
 
             Intent intent = new Intent(BROADCAST_MEDICION);
             intent.putExtra("medicion", medicion.toDisplay());
+            intent.putExtra("crono", medicion.cronometro.getT0());
             LocalBroadcastManager.getInstance(lcontext).sendBroadcast(intent);
-
+/*
+            if (medicion.cronometro.getT0() > 300000){
+                this.stop();
+            }
+*/
         }
 
 

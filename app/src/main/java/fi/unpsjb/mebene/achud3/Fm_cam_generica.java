@@ -185,6 +185,31 @@ public class Fm_cam_generica extends Fragment {
         public void onReceive(Context context, Intent intent) {
             //if(bcConsolaActivo)
                 eT_Consola.setText(intent.getStringExtra("medicion"));
+                if (intent.getLongExtra("crono",0)>30000){
+                    acCore.detenerAdquisicion();
+                    ibRec.setClickable(true);
+                    ibRec.setBackgroundResource(R.mipmap.ic_icono_bsckground_unselected);
+
+                    //lanzar cartel periodo de prueba
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setTitle("Limite de tiempo version Free");
+                /*builder.setMessage(
+                        "AYUDA\n\n"
+                                +"Aqui una descripcion con dibujo de cada boton" );*/
+
+                    //LayoutInflater inflater = (LayoutInflater)getActivity().getSystemService (Context.LAYOUT_INFLATER_SERVICE);
+                    //View vi = inflater.inflate(R.layout.ayuda_captura, null);
+                    //builder.setView(vi);
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+                    //builder.setIcon()
+
+                    AlertDialog alert = builder.create();
+                    alert.show();
+                }
         }
     };
 

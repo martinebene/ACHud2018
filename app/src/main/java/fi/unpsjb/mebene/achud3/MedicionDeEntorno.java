@@ -629,9 +629,18 @@ class Velocidad {
                 case MedicionDeEntorno.MS:
                     velocidad = velMedida; Log.e("Aviso2", "Entre en m/s: " + unidad + " y str: " + strUnidad);break;
                 case MedicionDeEntorno.MKM:
-                    velocidad = (3600/(velMedida * 3.6))/60; Log.e("Aviso2", "Entre en min/km: " + unidad + " y str: " + strUnidad);break;
+                    if(velMedida!=0) {
+                        velocidad = (3600 / (velMedida * 3.6)) / 60;
+                        Log.e("Aviso2", "Entre en min/km: " + unidad + " y str: " + strUnidad);
+                    }else
+                        velocidad=0;
+                    break;
                 case MedicionDeEntorno.MM:
-                    velocidad = (3600/(velMedida * 2.23694))/60; Log.e("Aviso2", "Entre en min/milla: " + unidad + " y str: " + strUnidad);break;
+                    if(velMedida!=0) {
+                    velocidad = (3600/(velMedida * 2.23694))/60; Log.e("Aviso2", "Entre en min/milla: " + unidad + " y str: " + strUnidad);
+                    }else
+                        velocidad=0;
+                    break;
             }
 
         if (velocidad > velocidadMaxima)
