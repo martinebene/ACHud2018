@@ -50,6 +50,6 @@
     <string name="s_unidades_de_distancia">Unidades de distancia</string>
     <string name="odometro">Odometro</string>
     <string name="acerca_de">AcHud (Action Cam Head Up Display)\nVersion:0.11.2 BETA\nCompilacion 30/11/18\nSoporte: achud.app@gmail.com</string>
-    <string name="s_msg_proversion">Se ha alcanzado el tiempo maximo para una medicion de la version FREE de la aplicacion, para realizar mediciones sin limite de tiempo instale la version PRO</string>
+    <string name="s_msg_proversion">Se ha alcanzado el tiempo maximo para una medicion de la version FREE de la aplicacion, para realizar mediciones sin limite de tiempo y mayores funcionalides, instale la version PRO de AC HUD</string>
 
 </resources>

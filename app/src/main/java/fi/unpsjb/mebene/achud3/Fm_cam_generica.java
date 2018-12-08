@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
@@ -165,11 +166,13 @@ public class Fm_cam_generica extends Fragment {
                 LayoutInflater inflater = (LayoutInflater)getActivity().getSystemService (Context.LAYOUT_INFLATER_SERVICE);
                 View vi = inflater.inflate(R.layout.ayuda_captura, null);
                 builder.setView(vi);
+
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();
                     }
                 });
+
                 AlertDialog alert = builder.create();
                 alert.show();
 
@@ -197,12 +200,22 @@ public class Fm_cam_generica extends Fragment {
                         "AYUDA\n\n"
                                 +"Aqui una descripcion con dibujo de cada boton" );*/
 
-                    //LayoutInflater inflater = (LayoutInflater)getActivity().getSystemService (Context.LAYOUT_INFLATER_SERVICE);
-                    //View vi = inflater.inflate(R.layout.ayuda_captura, null);
-                    //builder.setView(vi);
-                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    LayoutInflater inflater = (LayoutInflater)getActivity().getSystemService (Context.LAYOUT_INFLATER_SERVICE);
+                    View vi = inflater.inflate(R.layout.dialog_pro_version, null);
+                    builder.setView(vi);
+
+
+                    builder.setNegativeButton("Continuar", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             dialog.dismiss();
+                        }
+                    });
+                    builder.setPositiveButton("Instalar PRO", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                            Intent marketIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://"));
+                            marketIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET|Intent.FLAG_ACTIVITY_MULTIPLE_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(marketIntent);
                         }
                     });
                     //builder.setIcon()
