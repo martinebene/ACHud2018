@@ -31,7 +31,7 @@ public class Fm_cam_generica extends Fragment {
     AcCore acCore;
     TextView tV_Status;
     EditText eT_Consola;
-    boolean bcConsolaActivo;
+    boolean bcConsolaActivo, mostreMensajePro;
     ImageButton ibRec, ibStop, ibSyncro, ibAyudaInterface;
 
     public Fm_cam_generica() {
@@ -66,6 +66,8 @@ public class Fm_cam_generica extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+
+        mostreMensajePro = false;
 
         eT_Consola = (EditText) getView().findViewById(R.id.eT_Consola);
         //eT_Consola.setInputType(InputType.TYPE_TEXT_FLAG_MULTI_LINE);
@@ -188,40 +190,42 @@ public class Fm_cam_generica extends Fragment {
         public void onReceive(Context context, Intent intent) {
             //if(bcConsolaActivo)
                 eT_Consola.setText(intent.getStringExtra("medicion"));
-                if (intent.getLongExtra("crono",0)>30000){
+                if (intent.getLongExtra("crono",0)>60000000){ //10 minutos
                     acCore.detenerAdquisicion();
                     ibRec.setClickable(true);
                     ibRec.setBackgroundResource(R.mipmap.ic_icono_bsckground_unselected);
 
+
+
                     //lanzar cartel periodo de prueba
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                    builder.setTitle("Limite de tiempo version Free");
-                /*builder.setMessage(
-                        "AYUDA\n\n"
-                                +"Aqui una descripcion con dibujo de cada boton" );*/
+                    if (!mostreMensajePro) {
+                        mostreMensajePro=true;
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                        builder.setTitle("Limite de tiempo version Free");
 
-                    LayoutInflater inflater = (LayoutInflater)getActivity().getSystemService (Context.LAYOUT_INFLATER_SERVICE);
-                    View vi = inflater.inflate(R.layout.dialog_pro_version, null);
-                    builder.setView(vi);
+                        LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                        View vi = inflater.inflate(R.layout.dialog_pro_version, null);
+                        builder.setView(vi);
 
-
-                    builder.setNegativeButton("Continuar", new DialogInterface.OnClickListener() {
+                        builder.setNegativeButton("Continuar", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                mostreMensajePro=false;
+                                dialog.dismiss();
+                            }
+                        });
+                   /* builder.setPositiveButton("Instalar PRO", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                        }
-                    });
-                    builder.setPositiveButton("Instalar PRO", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
+                            mostreMensajePro=false;
                             dialog.dismiss();
                             Intent marketIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://"));
                             marketIntent.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY | Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET|Intent.FLAG_ACTIVITY_MULTIPLE_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                             startActivity(marketIntent);
                         }
                     });
-                    //builder.setIcon()
-
-                    AlertDialog alert = builder.create();
-                    alert.show();
+                    */
+                        AlertDialog alert = builder.create();
+                        alert.show();
+                    }
                 }
         }
     };

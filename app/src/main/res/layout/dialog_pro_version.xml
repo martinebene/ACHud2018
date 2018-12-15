@@ -17,7 +17,7 @@
         android:paddingLeft="5dp"
         android:paddingRight="5dp"
         android:paddingStart="5dp"
-        android:text="@string/s_msg_proversion" />
+        android:text="@string/s_msg_proversion1" />
 
     <ImageView
         android:id="@+id/imageView6"

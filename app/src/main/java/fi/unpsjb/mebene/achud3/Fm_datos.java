@@ -131,7 +131,7 @@ public class Fm_datos extends Fragment {
                 +getResources().getString(R.string.s_out_dir);
 
         TextView ruta = (TextView)  getView().findViewById(R.id.tV_ruta);
-        ruta.setText("Ruta de datos: "+rutaDatos);
+        ruta.setText("Ruta de datos:\n"+rutaDatos);
 
         //et_delay = (EditText) getView().findViewById(R.id.et_del_min);
 

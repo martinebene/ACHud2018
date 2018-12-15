@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent">
+    <item>
+        <shape>
+            <solid android:color="@color/background_floating_material_light" />
+
+            <stroke
+                android:width="1dp"
+                android:color="#6f94c7" />
+
+            <padding
+                android:bottom="2dp"
+                android:left="2dp"
+                android:right="4dp"
+                android:top="2dp" />
+        </shape>
+    </item>
+    <item>
+        <bitmap
+            android:gravity="end"
+            android:src="@mipmap/ic_action_drop"
+            android:rotation="90"/>
+    </item>
+</layer-list>
