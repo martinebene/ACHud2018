@@ -1,4 +1,4 @@
-package fi.unpsjb.mebene.achud3;
+package fi.unpsjb.mebene.achud;
 
 import java.util.Vector;
 

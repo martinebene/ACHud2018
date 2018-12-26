@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="10dp"
+        android:background="@null"
         android:cursorVisible="false"
         android:editable="false"
         android:ems="10"
@@ -21,6 +22,5 @@
         android:scrollbars="vertical"
         android:text="@string/acerca_de"
         android:textAlignment="center"
-        android:textIsSelectable="false"
-        android:background="@null"/>
+        android:textIsSelectable="false" />
 </LinearLayout>

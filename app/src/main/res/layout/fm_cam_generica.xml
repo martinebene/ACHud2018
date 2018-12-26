@@ -18,18 +18,18 @@
             android:layout_height="40dp" />
 
         <EditText
+            android:id="@+id/eT_Consola"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:id="@+id/eT_Consola"
-            android:background="@color/background_floating_material_light"
-            android:textColor="@color/texto_obscuro"
-            android:textSize="@dimen/abc_text_size_small_material"
-            android:scrollHorizontally="false"
-            android:clickable="false"
-            android:isScrollContainer="true"
             android:layout_margin="10dp"
-            android:focusable="false" />
+            android:layout_weight="1"
+            android:background="@color/background_floating_material_light2"
+            android:clickable="false"
+            android:focusable="false"
+            android:isScrollContainer="true"
+            android:scrollHorizontally="false"
+            android:textColor="@color/texto_obscuro"
+            android:textSize="14sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -44,6 +44,7 @@
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:background="@mipmap/ic_icono_bsckground_unselected"
+                android:contentDescription="TODO"
                 android:src="@mipmap/ic_action_record" />
 
 
@@ -55,7 +56,8 @@
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:background="@mipmap/ic_icono_bsckground_unselected"
-                android:src="@mipmap/ic_action_playback_stop" />
+                android:src="@mipmap/ic_action_playback_stop"
+                android:contentDescription="TODO" />
 
             <ImageButton
                 android:id="@+id/ibSyncro"
@@ -65,7 +67,8 @@
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:background="@mipmap/ic_icono_bsckground_unselected"
-                android:src="@mipmap/ic_action_reload" />
+                android:src="@mipmap/ic_action_reload"
+                android:contentDescription="TODO" />
 
             <ImageButton
                 android:id="@+id/ibAyudaInterface"
@@ -75,7 +78,8 @@
                 android:layout_weight="1"
                 android:adjustViewBounds="true"
                 android:background="@mipmap/ic_icono_bsckground_unselected"
-                android:src="@mipmap/ic_action_help" />
+                android:src="@mipmap/ic_action_help"
+                android:contentDescription="TODO" />
 
         </LinearLayout>
     </LinearLayout>

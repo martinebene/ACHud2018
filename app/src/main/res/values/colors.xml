@@ -3,4 +3,14 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="bfmd">#434343</color>
+    <color name="background_floating_material_dark">#424242</color>
+    <color name="dim_foreground_disabled_material_light">#80323232</color>
+    <color name="dim_foreground_material_dark">#bebebe</color>
+    <color name="background_floating_material_dark2">#424242</color>
+    <color name="background_material_light2">#fafafa</color>
+    <color name="dim_foreground_disabled_material_light2">#80323232</color>
+    <color name="dim_foreground_material_dark2">#bebebe</color>
+    <color name="background_floating_material_light2">#ffffff</color>
+    <color name="abc_primary_text_material_dark2">#b3ffffff</color>
 </resources>

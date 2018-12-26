@@ -1,4 +1,4 @@
-package fi.unpsjb.mebene.achud3;
+package fi.unpsjb.mebene.achud;
 
 import android.Manifest;
 import android.app.Notification;
@@ -94,7 +94,7 @@ public class ServicioAdquisicion3 extends Service implements SensorEventListener
 
         asyncMedicion.execute();
         //return super.onStartCommand(intent, flags, startId);
-        Log.i("tag111", "Servicio adquisicion onStart");
+       // Log.i("tag111", "Servicio adquisicion onStart");
         return START_NOT_STICKY;
 
     }
@@ -104,7 +104,7 @@ public class ServicioAdquisicion3 extends Service implements SensorEventListener
     @Override
     public void onDestroy() {
         asyncMedicion.stop();
-        Log.i("tag111", "Servicio adquisicion onDestroy");
+        //Log.i("tag111", "Servicio adquisicion onDestroy");
         super.onDestroy();
 
     }
@@ -114,7 +114,7 @@ public class ServicioAdquisicion3 extends Service implements SensorEventListener
     @Override
     public void onTaskRemoved(Intent rootIntent) {
         super.onTaskRemoved(rootIntent);
-        Log.i("tag111", "Servicio adquisicion onTaskRemoved");
+        //Log.i("tag111", "Servicio adquisicion onTaskRemoved");
         asyncMedicion.cancel(true);
         stopSelf();
     }
@@ -241,7 +241,7 @@ public class ServicioAdquisicion3 extends Service implements SensorEventListener
                 ubicacionAnterior=location;
             }
             offset=location.distanceTo(ubicacionAnterior);
-            Log.e("odo", "dit offset = "+offset);
+            //Log.e("odo", "dit offset = "+offset);
 
             if (offset>10){
                 medicion.odometro.addOdometro(offset);
@@ -343,11 +343,11 @@ public class ServicioAdquisicion3 extends Service implements SensorEventListener
                 } else{
                     this.cancel(true);
                     stopSelf();
-                    Log.e("tag23", "no disponible alamacenamiento externo");
+ //                   Log.e("tag23", "no disponible alamacenamiento externo");
                 }
             }
             catch (Exception ex){
-                Log.e("Ficheros", "Error al escribir fichero a memoria interna");
+            //    Log.e("Ficheros", "Error al escribir fichero a memoria interna");
             }
         }
 
@@ -361,7 +361,7 @@ public class ServicioAdquisicion3 extends Service implements SensorEventListener
             running = true;
             medicion.cronometro.iniciar();
 
-            Log.i("tag111", "AsyncMedicion iniciando");
+        //    Log.i("tag111", "AsyncMedicion iniciando");
             while (running){
                 try {
                     Thread.sleep(100);
@@ -396,12 +396,12 @@ public class ServicioAdquisicion3 extends Service implements SensorEventListener
                     }
                     linea = linea + "\n";
 
-                    Log.i("tag4444", "Linea Nueva: " + linea);
+               //     Log.i("tag4444", "Linea Nueva: " + linea);
 
                     try {
                         fout.write(linea);
                     } catch (IOException e) {
-                        Log.e("Ficheros", "Error al escribir fichero a memoria interna linea");
+                //        Log.e("Ficheros", "Error al escribir fichero a memoria interna linea");
                         e.printStackTrace();
                     }
                 }
@@ -424,7 +424,7 @@ public class ServicioAdquisicion3 extends Service implements SensorEventListener
 
         @Override
         protected void onPostExecute(Object o) {
-            Log.i("tag111", "AsyncMedicion onPostExecute");
+       //     Log.i("tag111", "AsyncMedicion onPostExecute");
 
             Intent intent = new Intent(BROADCAST_MEDICION);
             if(!(file_out.exists()))
@@ -450,7 +450,7 @@ public class ServicioAdquisicion3 extends Service implements SensorEventListener
         @Override
         protected void onCancelled() {
             super.onCancelled();
-            Log.i("tag111", "AsyncMedicion onCancelled");
+       //     Log.i("tag111", "AsyncMedicion onCancelled");
             running=false;
         }
 

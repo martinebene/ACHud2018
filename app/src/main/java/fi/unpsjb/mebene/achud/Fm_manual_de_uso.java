@@ -1,10 +1,9 @@
-package fi.unpsjb.mebene.achud3;
+package fi.unpsjb.mebene.achud;
 
 import android.annotation.TargetApi;
 import android.app.Fragment;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,5 +68,6 @@ public class Fm_manual_de_uso extends Fragment {
         }
         eT_manual.setText((CharSequence) "");
         eT_manual.setText((CharSequence) text);
+        eT_manual.scrollTo(0,eT_manual.getTop());
     }
 }

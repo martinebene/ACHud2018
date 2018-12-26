@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_floating_material_dark"
+    android:background="@color/background_floating_material_dark2"
     android:orientation="vertical">
 
 
@@ -21,7 +21,7 @@
             android:layout_height="40dp"
             android:layout_gravity="top"
             android:paddingLeft="10dp"
-            android:textSize="@dimen/abc_text_size_small_material" />
+            android:textSize="14sp" />
 
         <ListView
             android:id="@+id/lst_archivos_esquemas"
@@ -32,13 +32,13 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_weight="0.5"
-            android:background="@color/background_material_light"
+            android:background="@color/background_material_light2"
             android:choiceMode="singleChoice"
-            android:divider="@color/background_floating_material_dark"
+            android:divider="@color/background_floating_material_dark2"
             android:fadeScrollbars="false"
-            android:listSelector="@color/dim_foreground_disabled_material_light"
+            android:listSelector="@color/dim_foreground_disabled_material_light2"
             android:scrollbarThumbVertical="@drawable/my_scrollbar"
-            android:scrollbarTrackVertical="@color/dim_foreground_material_dark" />
+            android:scrollbarTrackVertical="@color/dim_foreground_material_dark2" />
 
         <ImageView
             android:id="@+id/imageViewHuds"
@@ -46,7 +46,8 @@
             android:layout_height="0dp"
             android:layout_margin="10dp"
             android:layout_weight="0.5"
-            android:padding="20dp" />
+            android:padding="20dp"
+            android:contentDescription="TODO" />
 
     </LinearLayout>
 
@@ -64,7 +65,8 @@
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:background="@mipmap/ic_icono_bsckground_unselected"
-            android:src="@mipmap/ic_action_edit" />
+            android:src="@mipmap/ic_action_edit"
+            android:contentDescription="TODO" />
 
 
         <ImageButton
@@ -75,7 +77,8 @@
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:background="@mipmap/ic_icono_bsckground_unselected"
-            android:src="@mipmap/ic_action_cancel" />
+            android:src="@mipmap/ic_action_cancel"
+            android:contentDescription="TODO" />
 
         <ImageButton
             android:id="@+id/ibCopyHud"
@@ -85,7 +88,8 @@
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:background="@mipmap/ic_icono_bsckground_unselected"
-            android:src="@mipmap/ic_action_copy" />
+            android:src="@mipmap/ic_action_copy"
+            android:contentDescription="TODO" />
 
         <ImageButton
             android:id="@+id/ibAyudaInterfaceHuds"
@@ -95,7 +99,8 @@
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:background="@mipmap/ic_icono_bsckground_unselected"
-            android:src="@mipmap/ic_action_help" />
+            android:src="@mipmap/ic_action_help"
+            android:contentDescription="TODO" />
 
     </LinearLayout>
-    </LinearLayout>
+</LinearLayout>

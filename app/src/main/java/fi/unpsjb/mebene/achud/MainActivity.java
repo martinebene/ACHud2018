@@ -1,4 +1,4 @@
-package fi.unpsjb.mebene.achud3;
+package fi.unpsjb.mebene.achud;
 
 import android.Manifest;
 import android.annotation.TargetApi;
@@ -157,13 +157,13 @@ public class MainActivity extends AppCompatActivity {
                         displayView1(0);
                         ultimaMarcaPosicionGrupo = grup_pos;
                         ultimaMarcaPosicionHijo = -1;
-                        Log.e("Aviso", "El Grupo es: " + grup_pos + " y SIN hijo");
+               //         Log.e("Aviso", "El Grupo es: " + grup_pos + " y SIN hijo");
                         break;
                     case 1:
                         displayView1(1);
                         ultimaMarcaPosicionGrupo = grup_pos;
                         ultimaMarcaPosicionHijo = -1;
-                        Log.e("Aviso", "El Grupo es: " + grup_pos + " y SIN hijo");
+                //        Log.e("Aviso", "El Grupo es: " + grup_pos + " y SIN hijo");
                         break;
                     default:
                         break;
@@ -184,24 +184,24 @@ public class MainActivity extends AppCompatActivity {
                     case 0:
                                 displayView1(0);
                                 displayView2(parent, 0, 0);
-                                Log.e("Aviso", "El Grupo es: " + grup_pos + " y el hijo es: " + child_pos);
+                           //     Log.e("Aviso", "El Grupo es: " + grup_pos + " y el hijo es: " + child_pos);
                         break;
                     case 1:
                                 displayView1(1);
                                 displayView2(parent, 1, 0);
-                                Log.e("Aviso", "El Grupo es: " + grup_pos + " y el hijo es: " + child_pos);
+                             //   Log.e("Aviso", "El Grupo es: " + grup_pos + " y el hijo es: " + child_pos);
                         break;
                     case 2:
                         switch (child_pos) {
                             case 0:
                                 displayView1(2);
                                 displayView2(parent, 2, 0);
-                                Log.e("Aviso", "El Grupo es: " + grup_pos + " y el hijo es: " + child_pos);
+                            //    Log.e("Aviso", "El Grupo es: " + grup_pos + " y el hijo es: " + child_pos);
                                 break;
                             case 1:
                                 displayView1(3);
                                 displayView2(parent, 2, 1);
-                                Log.e("Aviso", "El Grupo es: " + grup_pos + " y el hijo es: " + child_pos);
+                          //      Log.e("Aviso", "El Grupo es: " + grup_pos + " y el hijo es: " + child_pos);
                                 break;
                             default:
                                 break;
@@ -212,12 +212,12 @@ public class MainActivity extends AppCompatActivity {
                             case 0:
                                 displayView1(4);
                                 displayView2(parent, 3, 0);
-                                Log.e("Aviso", "El Grupo es: " + grup_pos + " y el hijo es: " + child_pos);
+                          //      Log.e("Aviso", "El Grupo es: " + grup_pos + " y el hijo es: " + child_pos);
                                 break;
                             case 1:
                                 displayView1(5);
                                 displayView2(parent, 3, 1);
-                                Log.e("Aviso", "El Grupo es: " + grup_pos + " y el hijo es: " + child_pos);
+                           //     Log.e("Aviso", "El Grupo es: " + grup_pos + " y el hijo es: " + child_pos);
                                 break;
                             default:
                                 break;
@@ -323,16 +323,16 @@ public class MainActivity extends AppCompatActivity {
 
         if ((tengoPermisoSD && tengoPermisoGPS)) {
 
-                Log.e("Aviso", "tengo los permisos: sd: " +tengoPermisoSD +" gps:"+tengoPermisoGPS);
+           //     Log.e("Aviso", "tengo los permisos: sd: " +tengoPermisoSD +" gps:"+tengoPermisoGPS);
 
         } else {
-            Log.e("Aviso", "no se si tengo los permisos: sd: " +tengoPermisoSD +" gps:"+tengoPermisoGPS);
+          //  Log.e("Aviso", "no se si tengo los permisos: sd: " +tengoPermisoSD +" gps:"+tengoPermisoGPS);
 
             if (ContextCompat.checkSelfPermission(this,
                     Manifest.permission.WRITE_EXTERNAL_STORAGE)
                     != PackageManager.PERMISSION_GRANTED) {
 
-                Log.e("Aviso", " No tenia permiso de Escribir SD1");
+            //    Log.e("Aviso", " No tenia permiso de Escribir SD1");
 
                 if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                         Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
@@ -345,7 +345,7 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             } else {
-                Log.e("Aviso", " SI tenia permiso de Escribir SD1");
+          //      Log.e("Aviso", " SI tenia permiso de Escribir SD1");
                 tengoPermisoSD = true;
             }
 
@@ -353,7 +353,7 @@ public class MainActivity extends AppCompatActivity {
                     Manifest.permission.ACCESS_FINE_LOCATION)
                     != PackageManager.PERMISSION_GRANTED) {
 
-                Log.e("Aviso", " No tenia permiso GPS1");
+           //     Log.e("Aviso", " No tenia permiso GPS1");
 
                 if (ActivityCompat.shouldShowRequestPermissionRationale(this,
                         Manifest.permission.ACCESS_FINE_LOCATION)) {
@@ -366,7 +366,7 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             } else {
-                Log.e("Aviso", " SI tenia permiso GPS1");
+        //        Log.e("Aviso", " SI tenia permiso GPS1");
                 tengoPermisoGPS = true;
             }/*
             try {
@@ -386,7 +386,7 @@ public class MainActivity extends AppCompatActivity {
 
         switch (position) {
             case 0:
-                Log.e("Aviso", "Entre en dv1 con pos: " + position);
+          //      Log.e("Aviso", "Entre en dv1 con pos: " + position);
                 fragment = new Fm_cam_generica();
                 mDrawerTitle = getResources().getString(R.string.menu_captura);
                 mTitle = getResources().getString(R.string.s_menu_camara_generica);
@@ -404,7 +404,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             case 1:
-                Log.e("Aviso", "Entre en dv1 con pos: " + position);
+           //     Log.e("Aviso", "Entre en dv1 con pos: " + position);
                 fragment = new Fm_datos();
                 mDrawerTitle = getResources().getString(R.string.menu_datos);
                 mTitle = getResources().getString(R.string.menu_datos);
@@ -415,7 +415,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             case 2:
-                Log.e("Aviso", "Entre en dv1 con pos: " + position);
+        //        Log.e("Aviso", "Entre en dv1 con pos: " + position);
                 fragment = new Fm_settings();
                 mDrawerTitle = getResources().getString(R.string.menu_configuracion);
                 mTitle = getResources().getString(R.string.s_menu_aplicacion);
@@ -426,7 +426,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             case 3:
-                Log.e("Aviso", "Entre en dv1 con pos: " + position);
+           //     Log.e("Aviso", "Entre en dv1 con pos: " + position);
                 fragment = new Fm_huds();
                 mDrawerTitle = getResources().getString(R.string.menu_configuracion);
                 mTitle = getResources().getString(R.string.s_menu_huds);
@@ -437,7 +437,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             case 4:
-                Log.e("Aviso", "Entre en dv1 con pos: " + position);
+         //       Log.e("Aviso", "Entre en dv1 con pos: " + position);
                 fragment = new Fm_manual_de_uso();
                 mDrawerTitle = getResources().getString(R.string.menu_ayuda);
                 mTitle = getResources().getString(R.string.s_menu_manual);
@@ -448,7 +448,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 break;
             case 5:
-                Log.e("Aviso", "Entre en dv1 con pos: " + position);
+          //      Log.e("Aviso", "Entre en dv1 con pos: " + position);
                 fragment = new Fm_acerca_de();
                 mDrawerTitle = getResources().getString(R.string.menu_ayuda);
                 mTitle = getResources().getString(R.string.s_menu_acerca_de);
@@ -479,7 +479,7 @@ public class MainActivity extends AppCompatActivity {
                 getSupportActionBar().setSubtitle(mTitle);
                 mDrawerLayout.closeDrawer(mDrawerExpandableList);
             } else {
-                Log.e("Aviso", "Error cuando se crea el fragment");
+       //         Log.e("Aviso", "Error cuando se crea el fragment");
             }
         }else{
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -606,10 +606,10 @@ public class MainActivity extends AppCompatActivity {
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Log.e("Aviso", " DI ok al permiso de Escribir SD");
+          //          Log.e("Aviso", " DI ok al permiso de Escribir SD");
                     //tengoPermisoSD = true;
                 } else {
-                    Log.e("Aviso", " NO DI ok al permiso de Escribir SD");
+          //          Log.e("Aviso", " NO DI ok al permiso de Escribir SD");
                     //finish();
                 }
                 return;
@@ -618,10 +618,10 @@ public class MainActivity extends AppCompatActivity {
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    Log.e("Aviso", " DI ok al permiso de GPS");
+             //       Log.e("Aviso", " DI ok al permiso de GPS");
                     //tengoPermisoGPS = true;
                 } else {
-                    Log.e("Aviso", " NO DI ok al permiso de GPS");
+              //      Log.e("Aviso", " NO DI ok al permiso de GPS");
                     //finish();
                 }
                 return;

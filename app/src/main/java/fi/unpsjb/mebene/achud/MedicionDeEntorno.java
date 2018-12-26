@@ -1,4 +1,4 @@
-package fi.unpsjb.mebene.achud3;
+package fi.unpsjb.mebene.achud;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -7,7 +7,6 @@ import android.util.Log;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Formatter;
 import java.util.Locale;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
@@ -194,7 +193,7 @@ public class MedicionDeEntorno {
 
         String salida[] = new String[EDA.values().length];
         for (int i = 0; i < salida.length; i++) {
-            salida[i] = "_";
+            salida[i] = "0";
         }
 
         salida[EDA.NRO_MED.ordinal()] = String.valueOf(nroDeMedicion);
@@ -245,7 +244,7 @@ public class MedicionDeEntorno {
             salida[EDA.ACEL_MA_AB_Z.ordinal()] = aceleracion.getMaxAbZ();
         }
 
-        Log.i("tag555", "Los Ts: " + salida[EDA.T0_SSS_MED.ordinal()] +" -> "+ salida[EDA.T1_SSS_MED.ordinal()]);
+   //     Log.i("tag555", "Los Ts: " + salida[EDA.T0_SSS_MED.ordinal()] +" -> "+ salida[EDA.T1_SSS_MED.ordinal()]);
 
         ultimaMedicion = salida;
         return ultimaMedicion;
@@ -618,26 +617,29 @@ class Velocidad {
 
     public void setVelocidad (double velMedida) {
 
-        Log.i("Aviso2", "Entre en set vel con velmedida: " + velMedida );
+  //      Log.i("Aviso2", "Entre en set vel con velmedida: " + velMedida );
 
             switch (unidad) {
                 case MedicionDeEntorno.KMH:
                     velocidad = velMedida * 3.6;
-                    Log.e("Aviso2", "Entre en kmh: " + unidad + " y str: " + strUnidad);break;
+        //            Log.e("Aviso2", "Entre en kmh: " + unidad + " y str: " + strUnidad);
+                    break;
                 case MedicionDeEntorno.MPH:
-                    velocidad = velMedida * 2.23694; Log.e("Aviso2", "Entre en mph: " + unidad + " y str: " + strUnidad);break;
+                    velocidad = velMedida * 2.23694; //Log.e("Aviso2", "Entre en mph: " + unidad + " y str: " + strUnidad);
+                    break;
                 case MedicionDeEntorno.MS:
-                    velocidad = velMedida; Log.e("Aviso2", "Entre en m/s: " + unidad + " y str: " + strUnidad);break;
+                    velocidad = velMedida; //Log.e("Aviso2", "Entre en m/s: " + unidad + " y str: " + strUnidad);
+                    break;
                 case MedicionDeEntorno.MKM:
                     if(velMedida!=0) {
                         velocidad = (3600 / (velMedida * 3.6)) / 60;
-                        Log.e("Aviso2", "Entre en min/km: " + unidad + " y str: " + strUnidad);
+                        //Log.e("Aviso2", "Entre en min/km: " + unidad + " y str: " + strUnidad);
                     }else
                         velocidad=0;
                     break;
                 case MedicionDeEntorno.MM:
                     if(velMedida!=0) {
-                    velocidad = (3600/(velMedida * 2.23694))/60; Log.e("Aviso2", "Entre en min/milla: " + unidad + " y str: " + strUnidad);
+                    velocidad = (3600/(velMedida * 2.23694))/60; //Log.e("Aviso2", "Entre en min/milla: " + unidad + " y str: " + strUnidad);
                     }else
                         velocidad=0;
                     break;
@@ -707,21 +709,21 @@ class Odometro {
 
     public void addOdometro (float offset) {
 
-        Log.i("Aviso2", "Entre en addOdo con recorrido: " + offset +" y unidad: "+ unidad);
+     //   Log.i("Aviso2", "Entre en addOdo con recorrido: " + offset +" y unidad: "+ unidad);
 
         switch (unidad) {
             case MedicionDeEntorno.KM:
                 recorrido = recorrido + (offset / 1000 );
-                Log.e("Aviso2", "Entre en km: " + unidad + " y str: " + strUnidad);break;
+                //Log.e("Aviso2", "Entre en km: " + unidad + " y str: " + strUnidad);break;
             case MedicionDeEntorno.MILL:
                 recorrido = recorrido + (offset / 1609.344 );
-                Log.e("Aviso2", "Entre en mp: " + unidad + " y str: " + strUnidad);break;
+              // Log.e("Aviso2", "Entre en mp: " + unidad + " y str: " + strUnidad);break;
             case MedicionDeEntorno.M:
                 recorrido = recorrido + offset;
-                Log.e("Aviso2", "Entre en m: " + unidad + " y str: " + strUnidad);break;
+              //  Log.e("Aviso2", "Entre en m: " + unidad + " y str: " + strUnidad);break;
             default:
                 recorrido = recorrido + offset;
-                Log.e("Aviso2", "Entre en m: " + unidad + " y str: " + strUnidad);break;
+            //    Log.e("Aviso2", "Entre en m: " + unidad + " y str: " + strUnidad);break;
         }
 
     }

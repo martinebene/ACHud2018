@@ -1,4 +1,4 @@
-package fi.unpsjb.mebene.achud3;
+package fi.unpsjb.mebene.achud;
 
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
@@ -105,10 +105,10 @@ public class Fm_huds extends Fragment {
         ruta.setText("Ruta de HUD's: "+ rutaHuds);
 
 
-        Log.e("tag33", "ruta: " + Environment.getExternalStorageDirectory());
-        Log.e("tag34", "ruta: " + File.separator);
-        Log.e("tag35", "ruta: " + getResources().getString(R.string.app_name));
-        Log.e("tag36", "ruta: " + Environment.getExternalStorageDirectory() + File.separator + getResources().getString(R.string.app_name));
+  //      Log.e("tag33", "ruta: " + Environment.getExternalStorageDirectory());
+  //      Log.e("tag34", "ruta: " + File.separator);
+ //       Log.e("tag35", "ruta: " + getResources().getString(R.string.app_name));
+  //      Log.e("tag36", "ruta: " + Environment.getExternalStorageDirectory() + File.separator + getResources().getString(R.string.app_name));
 
         File f = new File(Environment.getExternalStorageDirectory() + File.separator + getResources().getString(R.string.app_name)+ File.separator+ getResources().getString(R.string.s_esquemas_dir));
         File[] files = f.listFiles();
@@ -117,7 +117,7 @@ public class Fm_huds extends Fragment {
         File file = files[i];
         if (file.isFile() && acCore.isExt(file.getName(), "xml"))
             item_esquemas.add(file.getName());
-        Log.i("tag4444", "archivo: " + file.getName());
+  //      Log.i("tag4444", "archivo: " + file.getName());
         }
 
         //Localizamos y llenamos las listas
@@ -178,7 +178,7 @@ public class Fm_huds extends Fragment {
                             Toast.LENGTH_SHORT).show();
                 }
 
-                Log.i("tag4444", "Se selecciono: " + archivoEsquemaSeleccionado);
+       //         Log.i("tag4444", "Se selecciono: " + archivoEsquemaSeleccionado);
             }
         });
 
@@ -216,7 +216,7 @@ public class Fm_huds extends Fragment {
                 else {
                     Toast.makeText(getActivity(),"Debe elegir un archivo de la lista", Toast.LENGTH_SHORT).show();
                 }
-                Log.i("tag4444", "Se elimino: " + archivoEsquemaSeleccionado);
+         //       Log.i("tag4444", "Se elimino: " + archivoEsquemaSeleccionado);
             }
         });
 
@@ -261,7 +261,7 @@ public class Fm_huds extends Fragment {
                                     builderError.setMessage("Ya existia un HUD con el nombre selccionado, reintente con un nombre distinto");
                                     builderError.show();
                                 }
-                                Log.i("tag4444", "Se copio: " + newFileName);
+                    //            Log.i("tag4444", "Se copio: " + newFileName);
                             }
                         }
                     });
@@ -311,7 +311,7 @@ public class Fm_huds extends Fragment {
 //********************************************************************************************************************************
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Log.i("tag4444", "Se ingerso al menu con: " + item.getItemId());
+   //     Log.i("tag4444", "Se ingerso al menu con: " + item.getItemId());
 
         switch (item.getItemId()) {
             case (R.id.refresh):
@@ -335,7 +335,7 @@ public class Fm_huds extends Fragment {
                         Toast.makeText(getActivity(), "No Application Available to View File: " + e, Toast.LENGTH_SHORT).show();
                     }
                 }
-                Log.i("tag4444", "Se selecciono: " + rutaHuds);
+        //        Log.i("tag4444", "Se selecciono: " + rutaHuds);
                 return true;
             case (R.id.restoreHUDs):
 
@@ -344,10 +344,10 @@ public class Fm_huds extends Fragment {
 
                 for (int i = 0; i < files.length; i++){
                     File fileToCopy = files[i];
-                    Log.i("tag4444", "file to copy: " + fileToCopy.getName());
+            //        Log.i("tag4444", "file to copy: " + fileToCopy.getName());
                     if(acCore.isExt(fileToCopy.getName(), "back")){
-                        Log.i("tag4444", "file to copy is back: " + fileToCopy.getName());
-                        Log.i("tag4444", "file to copy sin back: " +  nameNoExt(fileToCopy.getName()));
+             //           Log.i("tag4444", "file to copy is back: " + fileToCopy.getName());
+               //         Log.i("tag4444", "file to copy sin back: " +  nameNoExt(fileToCopy.getName()));
                         File fileRestored = new File(rutaHuds + File.separator + nameNoExt(fileToCopy.getName()));
                         try {
                             acCore.copyFile(fileToCopy, fileRestored);

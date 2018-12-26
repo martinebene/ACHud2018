@@ -1,4 +1,4 @@
-package fi.unpsjb.mebene.achud3;
+package fi.unpsjb.mebene.achud;
 
 import android.app.ActivityManager;
 import android.app.ProgressDialog;
@@ -47,7 +47,7 @@ public class AcCore implements AsyncProcesCompleteListener<File> {
 
     //**********************************************************************************************************************//
     public void iniciarAdquisicion(){
-        Log.i("tag111", "iniciarAdquisicion");
+       // Log.i("tag111", "iniciarAdquisicion");
         try {
             if(!isAdquisicionRunning()) {
                 context.startService(new Intent(context, ServicioAdquisicion3.class));
@@ -55,32 +55,37 @@ public class AcCore implements AsyncProcesCompleteListener<File> {
                 Toast toast = Toast.makeText(context, R.string.s_mensaje_servicio_en_ejecucion, Toast.LENGTH_LONG);
                 toast.show(); }
         } catch (Exception e){
-            Log.e("Error", "Error al iniciar servicio");
+        //    Log.e("Error", "Error al iniciar servicio");
         }
 
     }
     //**********************************************************************************************************************//
     public void detenerAdquisicion(){
-        Log.i("tag111", "detenerAdquisicion");
+    //    Log.i("tag111", "detenerAdquisicion");
         context.stopService(new Intent(context, ServicioAdquisicion3.class));
     }
 
     //**********************************************************************************************************************//
     public boolean isAdquisicionRunning() {
+        try {
         ActivityManager manager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
-        for (ActivityManager.RunningServiceInfo service : manager
-                .getRunningServices(Integer.MAX_VALUE)) {
-            if (ServicioAdquisicion3.class.getName().equals(
-                    service.service.getClassName())) {
-                return true;
+
+            for (ActivityManager.RunningServiceInfo service : manager
+                    .getRunningServices(Integer.MAX_VALUE)) {
+                if (ServicioAdquisicion3.class.getName().equals(
+                        service.service.getClassName())) {
+                    return true;
+                }
             }
+        }catch (Exception e){
+            return false;
         }
         return false;
     }
 
     //**********************************************************************************************************************//
     public void crearDirectorios(){
-        Log.i("tag111", "crear directorios");
+   //     Log.i("tag111", "crear directorios");
         String pathEsquemas;
         try {
             if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
@@ -125,10 +130,10 @@ public class AcCore implements AsyncProcesCompleteListener<File> {
                             in = assetManager.open(context.getString(R.string.s_esquemas_assets_dir)+ File.separator+fl[i]);
                             String newFileNameBack = pathEsquemas + File.separator+ fl[i]+".back";
                             outBack = new FileOutputStream(newFileNameBack);
-                            Log.i("tag3434: ", newFileNameBack);
+                     //       Log.i("tag3434: ", newFileNameBack);
                             while ((read = in.read(buffer)) != -1) {
                                 outBack.write(buffer, 0, read);
-                                Log.i("tag3434: ", buffer.toString());
+                          //      Log.i("tag3434: ", buffer.toString());
                             }
                         }
 
@@ -145,11 +150,11 @@ public class AcCore implements AsyncProcesCompleteListener<File> {
                     }
                 }
             } else{
-                Log.e("tag23", "no disponible alamacenamiento externo");
+             //   Log.e("tag23", "no disponible alamacenamiento externo");
             }
         }
         catch (Exception ex){
-            Log.e("Ficheros", "Error al escribir fichero en memoria interna");
+         //   Log.e("Ficheros", "Error al escribir fichero en memoria interna");
         }
 
     }
@@ -533,12 +538,12 @@ private class AsyncProcesarDatos extends AsyncTask<Object, Object, Object> {
 
         if (f_datos.exists()) {
             try {
-                Log.i("tag444", "entre f datos");
+            //    Log.i("tag444", "entre f datos");
 
                 if (f_out != null)
                     fout = new OutputStreamWriter(new FileOutputStream(f_out));
                 else {
-                    Log.e("Procesar", "Error al abrir archivo de salida");
+          //          Log.e("Procesar", "Error al abrir archivo de salida");
                     return null;
                 }
 
@@ -588,10 +593,10 @@ private class AsyncProcesarDatos extends AsyncTask<Object, Object, Object> {
                                 lineaSrt = esquema.getMed_sub();
 
 
-                            Log.i("tag444", "tamaño del vector: " + esquema.grafValVector.size());
+                   //         Log.i("tag444", "tamaño del vector: " + esquema.grafValVector.size());
 
                             for (GrafVal gv : esquema.grafValVector) {
-                                Log.i("tag444", "nuevo grafVector: " + gv);
+                       //         Log.i("tag444", "nuevo grafVector: " + gv);
 
                                 float valor = Float.valueOf(arrayValoresConDelay[MedicionDeEntorno.EDA.valueOf(gv.getInputTagName()).ordinal()]);
 
@@ -607,7 +612,7 @@ private class AsyncProcesarDatos extends AsyncTask<Object, Object, Object> {
                             lineaSrt = lineaSrt.replaceAll("\\{" + "NRO_LINE" + "\\}", String.valueOf(nroLine));
 
                             fout.write(lineaSrt);
-                            Log.i("tag444", lineaSrt);
+                     //       Log.i("tag444", lineaSrt);
                         }
 
                         arrayValoresAnterior = arrayValores;
@@ -616,12 +621,12 @@ private class AsyncProcesarDatos extends AsyncTask<Object, Object, Object> {
 
                 fout.write(esquema.getFooter());
 
-                Log.i("tag444", "lineas al final del readline de datos: " + String.valueOf(n));
+       //         Log.i("tag444", "lineas al final del readline de datos: " + String.valueOf(n));
                 in.close();
                 fout.close();
 
             } catch (Exception e) {
-                Log.e("tag444", "Error al procesar: " + e);
+          //      Log.e("tag444", "Error al procesar: " + e);
                 return null;
             }
 

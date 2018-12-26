@@ -1,4 +1,4 @@
-package fi.unpsjb.mebene.achud3;
+package fi.unpsjb.mebene.achud;
 
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
@@ -84,8 +84,10 @@ public class Fm_datos extends Fragment {
     @Override
     public void onAttach(Context cont) {
         super.onAttach(cont );
-        MainActivity ma = (MainActivity) getActivity();
-        acCore = ma.acCore;
+       // MainActivity ma = (MainActivity) getActivity();
+       // acCore = ma.acCore;
+        acCore = ((MainActivity)getActivity()).acCore;
+
     }
 
     /*
@@ -135,10 +137,10 @@ public class Fm_datos extends Fragment {
 
         //et_delay = (EditText) getView().findViewById(R.id.et_del_min);
 
-        Log.e("tag33", "ruta: " + Environment.getExternalStorageDirectory());
-        Log.e("tag34", "ruta: " + File.separator);
-        Log.e("tag35", "ruta: " + getResources().getString(R.string.app_name));
-        Log.e("tag36", "ruta: " + Environment.getExternalStorageDirectory() + File.separator + getResources().getString(R.string.app_name));
+    //    Log.e("tag33", "ruta: " + Environment.getExternalStorageDirectory());
+    //    Log.e("tag34", "ruta: " + File.separator);
+     //  Log.e("tag35", "ruta: " + getResources().getString(R.string.app_name));
+    //    Log.e("tag36", "ruta: " + Environment.getExternalStorageDirectory() + File.separator + getResources().getString(R.string.app_name));
 
         File f = new File(Environment.getExternalStorageDirectory() + File.separator + getResources().getString(R.string.app_name)+ File.separator+ getResources().getString(R.string.s_datos_dir));
         File[] files = f.listFiles();
@@ -228,7 +230,7 @@ public class Fm_datos extends Fragment {
                         File file = new File(Environment.getExternalStorageDirectory() + File.separator + getResources().getString(R.string.app_name)+ File.separator
                                 + getResources().getString(R.string.s_esquemas_dir) + File.separator +nameNoExt((String)listaArchivosEsquemas.getSelectedItem())+".png");
                         if(file.exists()) {
-                            Log.e("tag34343", "abs path: " + file.getAbsolutePath());
+                   //         Log.e("tag34343", "abs path: " + file.getAbsolutePath());
                             ImageViewHuds.setImageBitmap(BitmapFactory.decodeFile(file.getAbsolutePath()));
                              }else {
                             ImageViewHuds.setImageResource(R.mipmap.no_preview);
@@ -310,7 +312,7 @@ public class Fm_datos extends Fragment {
 
                 if(f_esquema.exists()){
                     try{
-                        Log.i("tag444", "entre f esquemas");
+                  //      Log.i("tag444", "entre f esquemas");
                         FileInputStream fstream = new FileInputStream(f_esquema);
                         DataInputStream in = new DataInputStream(fstream);
 
@@ -322,14 +324,14 @@ public class Fm_datos extends Fragment {
 
                         in.close();
 
-                        Log.i("tag555", "esquema Ext: " + esquemaHud.getExt());
-                        Log.i("tag555", "esquema Header: " + esquemaHud.getHeader());
-                        Log.i("tag555", "esquema intSub: " + esquemaHud.getIntro_sub() );
-                        Log.i("tag555", "esquema medsub: " + esquemaHud.getMed_sub() );
-                        Log.i("tag555", "esquema Delay: " + esquemaHud.getDelay() );
+               //         Log.i("tag555", "esquema Ext: " + esquemaHud.getExt());
+                //        Log.i("tag555", "esquema Header: " + esquemaHud.getHeader());
+               //         Log.i("tag555", "esquema intSub: " + esquemaHud.getIntro_sub() );
+               //         Log.i("tag555", "esquema medsub: " + esquemaHud.getMed_sub() );
+               //         Log.i("tag555", "esquema Delay: " + esquemaHud.getDelay() );
 
                     }catch (Exception e){
-                        Log.e("Procesar", "Error al procesar esquema" + e);
+              //          Log.e("Procesar", "Error al procesar esquema" + e);
                         return;}
                 }else{
                     Toast.makeText(getActivity(), getResources().getString(R.string.s_elemento_no_seleccionado), Toast.LENGTH_LONG).show();
@@ -529,7 +531,7 @@ public class Fm_datos extends Fragment {
                 else {
                     Toast.makeText(getActivity(),"Debe elegir un archivo de la lista", Toast.LENGTH_SHORT).show();
                 }
-                Log.i("tag4444", "Se elimino: " + archivoDatosSeleccionado);
+          //      Log.i("tag4444", "Se elimino: " + archivoDatosSeleccionado);
             }
         });
 
@@ -569,7 +571,7 @@ public class Fm_datos extends Fragment {
                                     builderError.setMessage("Ya existia un archivo de datos con el nombre selccionado, reintente con un nombre distinto");
                                     builderError.show();
                                 }
-                                Log.i("tag4444", "Se copio: " + newFileName);
+                        //        Log.i("tag4444", "Se copio: " + newFileName);
                             }
                         }
                     });
@@ -633,7 +635,7 @@ public class Fm_datos extends Fragment {
 public void shareCreatedFile(final File f_out_result){
     //private void shareCreatedFile(File f_out, File f_datos, EsquemaHUD esquema, int delay, int irm_gui){
     //final File f_out_result=acCore.procesarDatos(f_out, f_datos, esquema, delay, irm_gui);
-    Log.i("tag4444", "Se ingerso a compartir");
+ //   Log.i("tag4444", "Se ingerso a compartir");
     if(f_out_result != null){
 
         StrictMode.VmPolicy.Builder builderSM = new StrictMode.VmPolicy.Builder();
@@ -652,11 +654,10 @@ public void shareCreatedFile(final File f_out_result){
                     intentShareFile.putExtra(Intent.EXTRA_SUBJECT,"Compartido por AC_HUD: \"" + f_out_result.getName()+"\"");
                     intentShareFile.putExtra(Intent.EXTRA_TEXT, "Archivo creado con AC_HUD, mas informacion en www.achud.com.ar");
 
-                    Log.i("tag4444", "Se creo intent en compartir");
+       //             Log.i("tag4444", "Se creo intent en compartir");
 
                     try {
-                        startActivity(Intent.createChooser(intentShareFile, "Share File"));
-                        Log.i("tag4444", "Se lanzo intent en compartir");
+       //                 Log.i("tag4444", "Se lanzo intent en compartir");
                     }
                     catch (ActivityNotFoundException e) {
                         Toast.makeText(getActivity(),"No Application Available to View File: " + e, Toast.LENGTH_SHORT).show();
@@ -684,7 +685,7 @@ public void shareCreatedFile(final File f_out_result){
 //********************************************************************************************************************************
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        Log.i("tag4444", "Se ingerso al menu con: " + item.getItemId());
+   //     Log.i("tag4444", "Se ingerso al menu con: " + item.getItemId());
         File file=null;
         switch (item.getItemId()) {
             case (R.id.refresh):
@@ -708,7 +709,7 @@ public void shareCreatedFile(final File f_out_result){
                         Toast.makeText(getActivity(), "No Application Available to View File: " + e, Toast.LENGTH_SHORT).show();
                     }
                 }
-                Log.i("tag4444", "Se selecciono: " + archivoDatosSeleccionado);
+         //       Log.i("tag4444", "Se selecciono: " + archivoDatosSeleccionado);
                 return true;
             case (R.id.invertOrder):
                 if(order == ORDEN_ASCENDENTE) {
@@ -744,7 +745,7 @@ public void shareCreatedFile(final File f_out_result){
                 else {
                     Toast.makeText(getActivity(),"Debe elegir un archivo de la lista", Toast.LENGTH_SHORT).show();
                 }
-                Log.i("tag4444", "Se selecciono para editar: " + archivoDatosSeleccionado);
+       //         Log.i("tag4444", "Se selecciono para editar: " + archivoDatosSeleccionado);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

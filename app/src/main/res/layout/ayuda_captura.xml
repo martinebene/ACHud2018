@@ -12,7 +12,7 @@
         android:paddingLeft="20dp">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imageView_ac1"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_gravity="center_vertical"
@@ -20,7 +20,7 @@
             app:srcCompat="@mipmap/ic_action_record" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/textView_ac1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -36,7 +36,7 @@
         android:paddingLeft="20dp">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imageView_ac2"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_gravity="center_vertical"
@@ -44,7 +44,7 @@
             app:srcCompat="@mipmap/ic_action_playback_stop" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/textView_ac2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -60,7 +60,7 @@
         android:paddingLeft="20dp">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imageView_ac3"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_gravity="center_vertical"
@@ -68,7 +68,7 @@
             app:srcCompat="@mipmap/ic_action_reload" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/textView_ac3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
@@ -84,7 +84,7 @@
         android:paddingLeft="20dp">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imageView_ac4"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_gravity="center_vertical|center_horizontal|center"
@@ -92,7 +92,7 @@
             app:srcCompat="@mipmap/ic_drawer" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/textView_ac4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"

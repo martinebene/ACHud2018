@@ -1,20 +1,47 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        mebene {
+            keyAlias 'mebene'
+            keyPassword 'martin123456'
+            storeFile file('C:/Users/Martin/Desktop/firma_GooglePlay.jks')
+            storePassword 'martin123456'
+        }
+    }
     compileSdkVersion 26
     defaultConfig {
-        applicationId "fi.unpsjb.mebene.achud3"
+        applicationId "fi.unpsjb.mebene.achud"
         minSdkVersion 19
         targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        versionCode 6
+        versionName "1.1.4"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.mebene
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.mebene
         }
+        debug {
+            signingConfig signingConfigs.mebene
+        }
+    }
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+    productFlavors {
+    }
+}
+
+allprojects {
+    tasks.withType(JavaCompile) {
+        options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
     }
 }
 

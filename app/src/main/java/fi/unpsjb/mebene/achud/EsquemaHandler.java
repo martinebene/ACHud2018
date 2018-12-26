@@ -1,4 +1,4 @@
-package fi.unpsjb.mebene.achud3;
+package fi.unpsjb.mebene.achud;
 
 import android.util.Log;
 
@@ -41,7 +41,7 @@ public class EsquemaHandler extends DefaultHandler {
             throws SAXException {
 
         super.endElement(uri, localName, name);
-        Log.i("Tag777", "EndElement: " + localName);
+    //    Log.i("Tag777", "EndElement: " + localName);
         if (etiquetaActual != null) {
 
             String ext="", header="", intro_sub="", med_sub="";
@@ -70,7 +70,7 @@ public class EsquemaHandler extends DefaultHandler {
 
 
 
-                Log.i("Tag777", "en fin de grafval 1" + grafVal.toString());
+         //       Log.i("Tag777", "en fin de grafval 1" + grafVal.toString());
 /*
                 try {
                     Thread.sleep(1000);
@@ -79,7 +79,7 @@ public class EsquemaHandler extends DefaultHandler {
                 }
 */
                 if((grafVal.getInputTagName()!=null)&&(grafVal.getOutputTagGrafName()!=null)&&(!(grafVal.getMax()<0)) && (!(grafVal.getMin()<0)) &&  (grafVal.getpChar()!=null) && (grafVal.getnChar()!=null) ){
-                    Log.i("Tag777", "en fin de grafval");
+                 //   Log.i("Tag777", "en fin de grafval");
   /*                  try {
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {
@@ -117,7 +117,7 @@ public class EsquemaHandler extends DefaultHandler {
     public void startDocument() throws SAXException {
 
         super.startDocument();
-        Log.i("Tag777", "StartDocument");
+     //   Log.i("Tag777", "StartDocument");
         esquemaHUD = new EsquemaHUD();
         sbTexto = new StringBuilder();
         sbTexto.setLength(0);
@@ -130,7 +130,7 @@ public class EsquemaHandler extends DefaultHandler {
 
         super.startElement(uri, localName, name, attributes);
 
-        Log.i("Tag777", "StartElement: " + localName);
+    //    Log.i("Tag777", "StartElement: " + localName);
 
         if (localName.equals("IntroSub") && attributes.getLength()==1 && attributes.getQName(0).equals("Time"))
             esquemaHUD.setIntroTime(Long.valueOf(attributes.getValue(0)));

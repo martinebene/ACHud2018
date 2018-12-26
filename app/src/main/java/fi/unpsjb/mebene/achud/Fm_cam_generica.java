@@ -1,4 +1,4 @@
-package fi.unpsjb.mebene.achud3;
+package fi.unpsjb.mebene.achud;
 
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
@@ -8,7 +8,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
@@ -50,7 +49,7 @@ public class Fm_cam_generica extends Fragment {
         super.onAttach(cont );
         MainActivity ma = (MainActivity) getActivity();
         acCore = ma.acCore;
-        Log.e("tag3434", "entre en onAtach");
+//        Log.e("tag3434", "entre en onAtach");
     }
 
     /*
@@ -190,7 +189,7 @@ public class Fm_cam_generica extends Fragment {
         public void onReceive(Context context, Intent intent) {
             //if(bcConsolaActivo)
                 eT_Consola.setText(intent.getStringExtra("medicion"));
-                if (intent.getLongExtra("crono",0)>60000000){ //10 minutos
+                if (intent.getLongExtra("crono",0)>600000){ //10 minutos
                     acCore.detenerAdquisicion();
                     ibRec.setClickable(true);
                     ibRec.setBackgroundResource(R.mipmap.ic_icono_bsckground_unselected);
