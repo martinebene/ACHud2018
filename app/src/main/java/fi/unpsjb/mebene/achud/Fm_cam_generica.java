@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 import android.view.Gravity;
@@ -99,7 +100,8 @@ public class Fm_cam_generica extends Fragment {
                 TextView toastMessage = (TextView) toastView.findViewById(android.R.id.message);
                 //toastMessage.setTextSize(R.integer.texto_gigante_altura);
                 toastMessage.setTextSize(75);
-                toastMessage.setBackgroundColor(getResources().getColor(R.color.rojo));
+               // toastMessage.setBackgroundColor(getResources().getColor(R.color.rojo));
+                toastMessage.setBackgroundColor(ContextCompat.getColor(getActivity().getApplicationContext(), R.color.rojo));
                 //toastMessage.setHighlightColor(getResources().getColor(R.color.rojo));
                 //toastMessage.setTextColor(R.color.ro);
                 //toastMessage.setGravity(Gravity.CENTER,0,0);

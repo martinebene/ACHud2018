@@ -30,16 +30,8 @@ public class Fm_manual_de_uso extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fm_manual_de_uso, container, false);
 
-        return rootView;
-    }
 
 
-
-    @Override
-    public void onResume() {
-        super.onResume();
-
-        eT_manual = (EditText) getView().findViewById(R.id.editText_manual);
         text = new StringBuilder();
 
         BufferedReader reader = null;
@@ -66,8 +58,23 @@ public class Fm_manual_de_uso extends Fragment {
                 }
             }
         }
-        eT_manual.setText((CharSequence) "");
+
+
+
+        return rootView;
+    }
+
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        eT_manual = (EditText) getView().findViewById(R.id.editText_manual);
+        eT_manual.setKeyListener(null);
+       // eT_manual.setText((CharSequence) "");
         eT_manual.setText((CharSequence) text);
-        eT_manual.scrollTo(0,eT_manual.getTop());
+
+        //eT_manual.scrollTo(0,0);
+
     }
 }

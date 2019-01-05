@@ -1,13 +1,18 @@
 package fi.unpsjb.mebene.achud;
 
 import android.app.ActivityManager;
-import android.app.ProgressDialog;
+//import android.app.ProgressDialog;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.AsyncTask;
 import android.os.Environment;
+import android.text.Layout;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -22,6 +27,8 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.Locale;
 import java.util.concurrent.TimeUnit;
+
+import dmax.dialog.SpotsDialog;
 
 /**
  * Created by Martin on 03/04/2016.
@@ -51,6 +58,7 @@ public class AcCore implements AsyncProcesCompleteListener<File> {
         try {
             if(!isAdquisicionRunning()) {
                 context.startService(new Intent(context, ServicioAdquisicion3.class));
+                adquiriendo = true;
             } else{
                 Toast toast = Toast.makeText(context, R.string.s_mensaje_servicio_en_ejecucion, Toast.LENGTH_LONG);
                 toast.show(); }
@@ -63,11 +71,12 @@ public class AcCore implements AsyncProcesCompleteListener<File> {
     public void detenerAdquisicion(){
     //    Log.i("tag111", "detenerAdquisicion");
         context.stopService(new Intent(context, ServicioAdquisicion3.class));
+        adquiriendo = false;
     }
 
     //**********************************************************************************************************************//
     public boolean isAdquisicionRunning() {
-        try {
+    /*    try {
         ActivityManager manager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
 
             for (ActivityManager.RunningServiceInfo service : manager
@@ -80,7 +89,8 @@ public class AcCore implements AsyncProcesCompleteListener<File> {
         }catch (Exception e){
             return false;
         }
-        return false;
+        return false;*/
+    return adquiriendo;
     }
 
     //**********************************************************************************************************************//
@@ -504,7 +514,9 @@ private class AsyncProcesarDatos extends AsyncTask<Object, Object, Object> {
     int delay;
     int irm=0;
     int irm_gui = 0;
-    public ProgressDialog pd;
+    //public ProgressDialog pd;
+    ProgressBar progressBar;
+    AlertDialog dialog;
 
 
     public AsyncProcesarDatos(Context cont, AsyncProcesCompleteListener<File> cb, File f_out, File f_datos, EsquemaHUD esquema, int delay, int irm_gui){
@@ -516,20 +528,23 @@ private class AsyncProcesarDatos extends AsyncTask<Object, Object, Object> {
         this.delay = delay;
         this.irm_gui = irm_gui;
 
-        pd = new ProgressDialog(context,R.style.MyTheme);
-        pd.setCancelable(false);
-        pd.setProgressStyle(android.R.style.Widget_ProgressBar_Small);
-        pd.setMessage("Procesando...");
+
+
+        //final int DIALOG_SHOW_TIME = 5000;
+        dialog = new SpotsDialog.Builder().setContext(context).build();
+        dialog.setMessage("Procesando...");
+
     }
 
     @Override
     protected void onPreExecute() {
-        pd.show();
+        dialog.show();
+
     }
 
     @Override
     protected void onPostExecute(Object o) {
-        pd.dismiss();
+        dialog.dismiss();
         callback.onTaskComplete(f_out);
     }
 

@@ -3,7 +3,7 @@ package fi.unpsjb.mebene.achud;
 import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.app.Fragment;
-import android.app.ProgressDialog;
+//import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -66,7 +66,7 @@ public class Fm_datos extends Fragment {
     Spinner listaArchivosEsquemas;
     EditText et_irm;
     String archivoDatosSeleccionado, archivoEsquemaSeleccionado, rutaDatos, rutaDeSalida;
-    ProgressDialog progress;
+    //ProgressDialog progress;
     ImageView ImageViewHuds;
 
 
@@ -102,9 +102,9 @@ public class Fm_datos extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-        progress = new ProgressDialog(this.getActivity());
+        /*progress = new ProgressDialog(this.getActivity());
         progress.setIndeterminate(true);
-        progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progress.setProgressStyle(ProgressDialog.STYLE_SPINNER);*/
 
     }
 
@@ -182,6 +182,9 @@ public class Fm_datos extends Fragment {
                 return arg0.compareTo(arg1);
             }
         });
+
+
+
         listaArchivosEsquemas.setAdapter(fileListEsq);
 /*
         listaArchivosEsquemas.setOnTouchListener( new View.OnTouchListener() {
@@ -635,7 +638,7 @@ public class Fm_datos extends Fragment {
 public void shareCreatedFile(final File f_out_result){
     //private void shareCreatedFile(File f_out, File f_datos, EsquemaHUD esquema, int delay, int irm_gui){
     //final File f_out_result=acCore.procesarDatos(f_out, f_datos, esquema, delay, irm_gui);
- //   Log.i("tag4444", "Se ingerso a compartir");
+   // Log.i("tag4444", "Se ingerso a compartir");
     if(f_out_result != null){
 
         StrictMode.VmPolicy.Builder builderSM = new StrictMode.VmPolicy.Builder();
@@ -643,7 +646,7 @@ public void shareCreatedFile(final File f_out_result){
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Archivo HUD creado con exito");
-        builder.setMessage(f_out_result.getName());
+        builder.setMessage("Ubicado en: "+f_out_result.getPath());
         builder.setPositiveButton("Compartir", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 if (f_out_result.exists()) {
@@ -654,10 +657,11 @@ public void shareCreatedFile(final File f_out_result){
                     intentShareFile.putExtra(Intent.EXTRA_SUBJECT,"Compartido por AC_HUD: \"" + f_out_result.getName()+"\"");
                     intentShareFile.putExtra(Intent.EXTRA_TEXT, "Archivo creado con AC_HUD, mas informacion en www.achud.com.ar");
 
-       //             Log.i("tag4444", "Se creo intent en compartir");
+                    //Log.i("tag4444", "Se creo intent en compartir");
 
                     try {
-       //                 Log.i("tag4444", "Se lanzo intent en compartir");
+                        //Log.i("tag4444", "Se lanzo intent en compartir");
+                        startActivity(Intent.createChooser(intentShareFile, "Share File"));
                     }
                     catch (ActivityNotFoundException e) {
                         Toast.makeText(getActivity(),"No Application Available to View File: " + e, Toast.LENGTH_SHORT).show();

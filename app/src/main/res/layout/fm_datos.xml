@@ -97,7 +97,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_gravity="center_vertical"
-        android:layout_weight="0.7"
+        android:layout_weight="0.8"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -105,7 +105,7 @@
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="5dp"
-            android:layout_weight="1"
+            android:layout_weight="0.8"
             android:orientation="vertical">
 
             <ImageView
@@ -114,14 +114,14 @@
                 android:layout_height="match_parent"
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"
-                android:src="@mipmap/no_preview"
-                android:contentDescription="TODO" />
+                android:contentDescription="TODO"
+                android:src="@mipmap/no_preview" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical|center_horizontal|center"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="10dp"
             android:layout_weight="0.7"
@@ -129,7 +129,8 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal">
 
                 <TextView
                     android:id="@+id/textView8"
@@ -184,14 +185,15 @@
                 android:id="@+id/tV_delay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:gravity="bottom|center_horizontal"
-                android:paddingTop="15dp"
+                android:paddingTop="5dp"
                 android:text="@string/s_delay"
                 android:textSize="20sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <TextView
@@ -257,12 +259,12 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <NumberPicker
                     android:id="@+id/nP_min_delay"
-                    android:layout_width="0dp"
+                    android:layout_width="8dp"
                     android:layout_height="50dp"
                     android:layout_weight="1" />
 
@@ -278,7 +280,7 @@
 
                 <NumberPicker
                     android:id="@+id/nP_seg_delay"
-                    android:layout_width="0dp"
+                    android:layout_width="8dp"
                     android:layout_height="50dp"
                     android:layout_weight="1" />
 
@@ -294,7 +296,7 @@
 
                 <NumberPicker
                     android:id="@+id/nP_millis_delay"
-                    android:layout_width="0dp"
+                    android:layout_width="8dp"
                     android:layout_height="50dp"
                     android:layout_weight="1" />
 

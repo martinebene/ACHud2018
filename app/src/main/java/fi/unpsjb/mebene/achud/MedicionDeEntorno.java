@@ -714,16 +714,20 @@ class Odometro {
         switch (unidad) {
             case MedicionDeEntorno.KM:
                 recorrido = recorrido + (offset / 1000 );
-                //Log.e("Aviso2", "Entre en km: " + unidad + " y str: " + strUnidad);break;
+                //Log.e("Aviso2", "Entre en km: " + unidad + " y str: " + strUnidad);
+                break;
             case MedicionDeEntorno.MILL:
                 recorrido = recorrido + (offset / 1609.344 );
-              // Log.e("Aviso2", "Entre en mp: " + unidad + " y str: " + strUnidad);break;
+              // Log.e("Aviso2", "Entre en mp: " + unidad + " y str: " + strUnidad);
+                break;
             case MedicionDeEntorno.M:
                 recorrido = recorrido + offset;
-              //  Log.e("Aviso2", "Entre en m: " + unidad + " y str: " + strUnidad);break;
+              //  Log.e("Aviso2", "Entre en m: " + unidad + " y str: " + strUnidad);
+                break;
             default:
                 recorrido = recorrido + offset;
-            //    Log.e("Aviso2", "Entre en m: " + unidad + " y str: " + strUnidad);break;
+            //    Log.e("Aviso2", "Entre en m: " + unidad + " y str: " + strUnidad);
+                break;
         }
 
     }

@@ -122,7 +122,8 @@ public class MainActivity extends AppCompatActivity {
         };
 
         mDrawerToggle.setDrawerIndicatorEnabled(true);//Mostrar icono menu animado
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        //mDrawerLayout.setDrawerListener(mDrawerToggle);
+        mDrawerLayout.addDrawerListener(mDrawerToggle);
         mDrawerExpandableList.setTextFilterEnabled(true);
 
         mDrawerExpandableList.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
