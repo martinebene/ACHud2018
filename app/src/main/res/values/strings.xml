@@ -53,5 +53,7 @@
     <string name="s_msg_proversion">Se ha alcanzado el tiempo maximo para una medicion de la version FREE de la aplicacion, para realizar mediciones sin limite de tiempo y mayores funcionalides, instale la version PRO de AC HUD.</string>
     <string name="s_msg_proversion1">Se ha alcanzado el tiempo maximo para una medicion de la version FREE de la aplicacion, proximamente se publicara la version PRO con la cual podra realizar mas mediciones sin limite de tiempo y mayores funcionalides.</string>
     <string name="mail_soporte">achud.app@gmail.com</string>
+    <string name="msg_captura"><b>Action Cam <i>HUD</i></b>, funciona en combinacion con una camara externa, consulte el manual de uso en el menu lateral de la aplicacion.</string>
+    <string name="msg_free_app"><b>Action Cam <i>HUD FREE</i></b>, solo admite capturas de hasta 10 minutos de duracion, para grabaciones mas prolongadas, adquirir la version PRO.</string>
 
 </resources>

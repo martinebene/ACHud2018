@@ -28,11 +28,14 @@ public class BufferInterpolacion {
 
         if(Integer.valueOf(medicion[MedicionDeEntorno.EDA.VEL_REP.ordinal()]) != ultimaLectura) {
             lecturaActual = Integer.valueOf(medicion[MedicionDeEntorno.EDA.VEL_REP.ordinal()]);
-            valorActual = Double.valueOf(medicion[MedicionDeEntorno.EDA.VEL.ordinal()]);
-
+            try {
+                valorActual = Double.valueOf(medicion[MedicionDeEntorno.EDA.VEL.ordinal()]);
+            }catch (NumberFormatException e){
+                valorActual=0.0;
+            }
             buffer.add(medicion);
 
-            if ((buffer.size() < 25)) {
+            if ((buffer.size() < 25) && (buffer.size()>2)) {
 
                 if ((buffer.size() > 1) && (ultimoValor != 0.0)) {
                     paso = (valorActual - ultimoValor) / (buffer.size() - 1);
@@ -40,7 +43,7 @@ public class BufferInterpolacion {
                     paso = 0.0;
 
 
-                for (int i = 1; i < (buffer.size() - 1); i++) { //arranco del 2do elemento y freno en el ante ultimo
+                for (int i = 1; (i < (buffer.size() - 1)) ; i++) { //arranco del 2do elemento y freno en el ante ultimo
                     datos = buffer.get(i);
                     velCorregida = Double.valueOf(datos[MedicionDeEntorno.EDA.VEL.ordinal()]) + (paso * i);
                     datos[MedicionDeEntorno.EDA.VEL.ordinal()] = df.format(velCorregida);
@@ -51,7 +54,7 @@ public class BufferInterpolacion {
 
                     if (i > 10) {
                         datos = buffer.get(i);
-                        datos[MedicionDeEntorno.EDA.VEL.ordinal()] = "---";
+                        datos[MedicionDeEntorno.EDA.VEL.ordinal()] = "000";
                         buffer.set(i, datos);
                     }
                 }
@@ -64,8 +67,13 @@ public class BufferInterpolacion {
             return buffer;
 
         }
-        buffer.add(medicion);
-        return null;
+        if(buffer.size()<30) {
+            buffer.add(medicion);
+            return null;
+        }
+        else{
+            return buffer;
+        }
     }
 
 /*

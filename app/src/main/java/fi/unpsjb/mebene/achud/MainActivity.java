@@ -61,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //acCore = new AcCore(this);
+
         //Opcional: Al iniciar la app se bloquea la pantalla en vertical para evitar perdida de datos (mDrawerTitle y mTitle)
         //setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
@@ -485,7 +487,7 @@ public class MainActivity extends AppCompatActivity {
         }else{
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("PERMISOS");
-            builder.setMessage("Para poder utilizar la aplicacion debera conceder los permisos solicitados, reiniciar y aceptar los permisos");
+            builder.setMessage("Para poder utilizar la aplicacion debera conceder los permisos solicitados, reinstalar si es necesario");
             builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.dismiss();

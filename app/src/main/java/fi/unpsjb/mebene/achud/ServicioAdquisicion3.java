@@ -201,7 +201,7 @@ public class ServicioAdquisicion3 extends Service implements SensorEventListener
         synchronized (this) {
             switch(evento.sensor.getType()) {
                 case Sensor.TYPE_GYROSCOPE:
-                    //Log.i("Sen", "Orientación "+i+": "+evento.values[i]);
+                    // i("Sen", "Orientación "+i+": "+evento.values[i]);
                     medicion.giro.push(evento.values[0], evento.values[1], evento.values[2]);
                     break;
                 case Sensor.TYPE_ACCELEROMETER:

@@ -36,7 +36,7 @@ import dmax.dialog.SpotsDialog;
 public class AcCore implements AsyncProcesCompleteListener<File> {
 
     Context context;
-    public boolean adquiriendo;
+    public boolean adquiriendo=false;
     ServicioAdquisicion3 mService;
 
     public String string_prueba;

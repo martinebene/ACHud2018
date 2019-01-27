@@ -80,18 +80,25 @@ public class Fm_cam_generica extends Fragment {
         ibSyncro = (ImageButton) getView().findViewById(R.id.ibSyncro);
         ibAyudaInterface = (ImageButton) getView().findViewById(R.id.ibAyudaInterface);
 
-        if(acCore.isAdquisicionRunning()){
-
-             ibRec.setClickable(false);
+        try {
+            if (acCore.isAdquisicionRunning()) {
+                ibRec.setClickable(false);
+                ibRec.setBackgroundResource(R.mipmap.ic_icono_bsckground_selected);
+            }
+        } catch(Exception e){
+            ibRec.setClickable(false);
             ibRec.setBackgroundResource(R.mipmap.ic_icono_bsckground_selected);
         }
 
+       eT_Consola.setText(getResources().getString(R.string.msg_captura) +"\n\n\n\n\n"+getResources().getString(R.string.msg_free_app));
+
+
         ibRec.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                acCore.iniciarAdquisicion();
+
                 ibRec.setClickable(false);
                 ibRec.setBackgroundResource(R.mipmap.ic_icono_bsckground_selected);
-
+                acCore.iniciarAdquisicion();
 
                 Toast toast = Toast.makeText(getActivity(), "SYNC", Toast.LENGTH_LONG);
                 View toastView = toast.getView(); //This'll return the default View of the Toast.
