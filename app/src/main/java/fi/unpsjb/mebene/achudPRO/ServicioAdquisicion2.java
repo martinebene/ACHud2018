@@ -1,8 +1,6 @@
-package fi.unpsjb.mebene.achud;
+package fi.unpsjb.mebene.achudPRO;
 
 import android.Manifest;
-import android.app.Notification;
-import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
@@ -20,7 +18,6 @@ import android.os.Environment;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
@@ -29,12 +26,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 
-public class ServicioAdquisicion3 extends Service implements SensorEventListener, IBaseGpsListener {
+public class ServicioAdquisicion2 extends Service implements SensorEventListener, IBaseGpsListener {
 
     static final public String BROADCAST_MEDICION = "com.mebene.ACHud.BROADCAST_MEDICION";
     private MedicionDeEntorno medicion;
@@ -43,14 +39,13 @@ public class ServicioAdquisicion3 extends Service implements SensorEventListener
     public Context lcontext = this;
     SharedPreferences sharedPref;
     public long t0, t1;
-    Location ubicacionAnterior;
     //private final IBinder mBinder = new LocalBinder();
 
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //**********************************************************************************************************************//
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public ServicioAdquisicion3() {
+    public ServicioAdquisicion2() {
     }
 
     //**********************************************************************************************************************//
@@ -58,18 +53,6 @@ public class ServicioAdquisicion3 extends Service implements SensorEventListener
     public void onCreate() {
         super.onCreate();
 
-        Intent notificationIntent = new Intent(this, MainActivity.class);
-
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,
-                notificationIntent, 0);
-
-        Notification notification = new NotificationCompat.Builder(this, "ACHud")
-                .setSmallIcon(R.mipmap.logo)
-                .setContentTitle("ACHud")
-                .setContentText("Capturando Datos...")
-                .setContentIntent(pendingIntent).build();
-
-        startForeground(1337, notification);
 
         asyncMedicion = new AsyncMedicion();
 
@@ -94,7 +77,7 @@ public class ServicioAdquisicion3 extends Service implements SensorEventListener
 
         asyncMedicion.execute();
         //return super.onStartCommand(intent, flags, startId);
-       // Log.i("tag111", "Servicio adquisicion onStart");
+        Log.i("tag111", "Servicio adquisicion onStart");
         return START_NOT_STICKY;
 
     }
@@ -104,7 +87,7 @@ public class ServicioAdquisicion3 extends Service implements SensorEventListener
     @Override
     public void onDestroy() {
         asyncMedicion.stop();
-        //Log.i("tag111", "Servicio adquisicion onDestroy");
+        Log.i("tag111", "Servicio adquisicion onDestroy");
         super.onDestroy();
 
     }
@@ -114,7 +97,7 @@ public class ServicioAdquisicion3 extends Service implements SensorEventListener
     @Override
     public void onTaskRemoved(Intent rootIntent) {
         super.onTaskRemoved(rootIntent);
-        //Log.i("tag111", "Servicio adquisicion onTaskRemoved");
+        Log.i("tag111", "Servicio adquisicion onTaskRemoved");
         asyncMedicion.cancel(true);
         stopSelf();
     }
@@ -138,7 +121,6 @@ public class ServicioAdquisicion3 extends Service implements SensorEventListener
 
 
         medicion.cronometro.activo = true;
-        ubicacionAnterior = null;
 
         LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -151,8 +133,8 @@ public class ServicioAdquisicion3 extends Service implements SensorEventListener
             // for ActivityCompat#requestPermissions for more details.
 
             /*
-             * reemplazar por un finish o algo asi
-             * */
+            * reemplazar por un finish o algo asi
+            * */
 
             return;
         }
@@ -160,10 +142,19 @@ public class ServicioAdquisicion3 extends Service implements SensorEventListener
         this.updateSpeed(null);
         medicion.velocidad.disponible = true; //meter en una condicion si gps disponible
         medicion.velocidad.activo = sharedPref.getBoolean("check_box_preference_velocidad",true);;
-        medicion.odometro.activo = sharedPref.getBoolean("check_box_preference_odometro",true);;
+
 
         List<Sensor> listSensors;
 
+        listSensors = sensorManager.getSensorList(Sensor.TYPE_MAGNETIC_FIELD);
+        if(!listSensors.isEmpty()){
+            Sensor magneticSensor = listSensors.get(0);
+            sensorManager.registerListener(this, magneticSensor, SensorManager.SENSOR_DELAY_UI);
+            medicion.campoMagnetico.disponible = true;
+            medicion.campoMagnetico.activo = sharedPref.getBoolean("check_box_preference_magnetico",true);
+        }else{
+            medicion.campoMagnetico.disponible = false;
+        }
 
         listSensors = sensorManager.getSensorList(Sensor.TYPE_ACCELEROMETER);
         if(!listSensors.isEmpty()){
@@ -173,6 +164,16 @@ public class ServicioAdquisicion3 extends Service implements SensorEventListener
             medicion.aceleracion.activo = sharedPref.getBoolean("check_box_preference_acelerometro",true);
         }else{
             medicion.aceleracion.disponible = false;
+        }
+
+        listSensors = sensorManager.getSensorList(Sensor.TYPE_GYROSCOPE);
+        if(!listSensors.isEmpty()){
+            Sensor gyroscopeSensor = listSensors.get(0);
+            sensorManager.registerListener(this, gyroscopeSensor, SensorManager.SENSOR_DELAY_UI);
+            medicion.giro.disponible = true;
+            medicion.giro.activo = sharedPref.getBoolean("check_box_preference_giro",true);
+        }else{
+            medicion.giro.disponible = false;
         }
 
 
@@ -201,7 +202,7 @@ public class ServicioAdquisicion3 extends Service implements SensorEventListener
         synchronized (this) {
             switch(evento.sensor.getType()) {
                 case Sensor.TYPE_GYROSCOPE:
-                    // i("Sen", "Orientación "+i+": "+evento.values[i]);
+                    //Log.i("Sen", "Orientación "+i+": "+evento.values[i]);
                     medicion.giro.push(evento.values[0], evento.values[1], evento.values[2]);
                     break;
                 case Sensor.TYPE_ACCELEROMETER:
@@ -232,22 +233,9 @@ public class ServicioAdquisicion3 extends Service implements SensorEventListener
 
     @Override
     public void onLocationChanged(Location location) {
-        float offset=0;
-
         if (location != null)
         {
             this.updateSpeed(location);
-            if (ubicacionAnterior == null){
-                ubicacionAnterior=location;
-            }
-            offset=location.distanceTo(ubicacionAnterior);
-            //Log.e("odo", "dit offset = "+offset);
-
-            if (offset>10){
-                medicion.odometro.addOdometro(offset);
-                ubicacionAnterior = location;
-            }
-
         }
     }
 
@@ -282,10 +270,8 @@ public class ServicioAdquisicion3 extends Service implements SensorEventListener
         }
         //String strUnits = "Km/h";
         medicion.velocidad.setVelocidad(nCurrentSpeed);
-        medicion.velocidad.resetRepeticion();
 
     }
-
 
 /*
     public String getTimeFormatedFromMillis(long millis, String formato)
@@ -325,8 +311,6 @@ public class ServicioAdquisicion3 extends Service implements SensorEventListener
         OutputStreamWriter fout;
         String filename_out=null;
         File file_out;
-        BufferInterpolacion bufferInterpolacion = new BufferInterpolacion();
-        ArrayList<String[]> bufferInterpolado = new ArrayList<String[]>();
 
         @Override
         protected void onPreExecute() {
@@ -343,11 +327,11 @@ public class ServicioAdquisicion3 extends Service implements SensorEventListener
                 } else{
                     this.cancel(true);
                     stopSelf();
- //                   Log.e("tag23", "no disponible alamacenamiento externo");
+                    Log.e("tag23", "no disponible alamacenamiento externo");
                 }
             }
             catch (Exception ex){
-            //    Log.e("Ficheros", "Error al escribir fichero a memoria interna");
+                Log.e("Ficheros", "Error al escribir fichero a memoria interna");
             }
         }
 
@@ -361,11 +345,11 @@ public class ServicioAdquisicion3 extends Service implements SensorEventListener
             running = true;
             medicion.cronometro.iniciar();
 
-        //    Log.i("tag111", "AsyncMedicion iniciando");
+            Log.i("tag111", "AsyncMedicion iniciando");
             while (running){
                 try {
-                    Thread.sleep(100);
-                    publishProgress();
+                        Thread.sleep(100);
+                        publishProgress();
                 } catch (Exception e) {
                     e.printStackTrace();
                     running=false;
@@ -377,54 +361,35 @@ public class ServicioAdquisicion3 extends Service implements SensorEventListener
         @Override
         protected void onProgressUpdate (Object... params) {
 
+            String arrayDatos[] = medicion.getIntervaloMedicion();
 
+            String linea ="";
+            for (int i= 0; i<arrayDatos.length ;i++){
+                linea = linea + arrayDatos[i];
+                if ((i-1)< arrayDatos.length)
+                    linea = linea + ",";
+            }
+            linea = linea + "\n";
 
-            //String arrayDatos[] = medicion.getIntervaloMedicion();
-            String arrayDatos[];
-            //String[] bufferDatos[] = null;
-            //Aca armar buffer e interpolar la vel
+            Log.i("tag4444", "Linea Nueva: " + linea);
 
-            if ((bufferInterpolado = bufferInterpolacion.add(medicion.getIntervaloMedicion())) != null){
-
-                for (int n = 0; n < (bufferInterpolado.size()); n++){
-                    arrayDatos = bufferInterpolado.get(n);
-                    String linea = "";
-                    for (int i = 0; i < arrayDatos.length; i++) {
-                        linea = linea + arrayDatos[i];
-                        if ((i - 1) < arrayDatos.length)
-                            linea = linea + ",";
-                    }
-                    linea = linea + "\n";
-
-               //     Log.i("tag4444", "Linea Nueva: " + linea);
-
-                    try {
-                        fout.write(linea);
-                    } catch (IOException e) {
-                //        Log.e("Ficheros", "Error al escribir fichero a memoria interna linea");
-                        e.printStackTrace();
-                    }
-                }
-                bufferInterpolacion.clear();
-            } else {
-
+            try {
+                fout.write(linea);
+            } catch (IOException e) {
+                Log.e("Ficheros", "Error al escribir fichero a memoria interna linea");
+                e.printStackTrace();
             }
 
             Intent intent = new Intent(BROADCAST_MEDICION);
             intent.putExtra("medicion", medicion.toDisplay());
-            intent.putExtra("crono", medicion.cronometro.getT0());
             LocalBroadcastManager.getInstance(lcontext).sendBroadcast(intent);
-/*
-            if (medicion.cronometro.getT0() > 300000){
-                this.stop();
-            }
-*/
+
         }
 
 
         @Override
         protected void onPostExecute(Object o) {
-       //     Log.i("tag111", "AsyncMedicion onPostExecute");
+            Log.i("tag111", "AsyncMedicion onPostExecute");
 
             Intent intent = new Intent(BROADCAST_MEDICION);
             if(!(file_out.exists()))
@@ -450,7 +415,7 @@ public class ServicioAdquisicion3 extends Service implements SensorEventListener
         @Override
         protected void onCancelled() {
             super.onCancelled();
-       //     Log.i("tag111", "AsyncMedicion onCancelled");
+            Log.i("tag111", "AsyncMedicion onCancelled");
             running=false;
         }
 

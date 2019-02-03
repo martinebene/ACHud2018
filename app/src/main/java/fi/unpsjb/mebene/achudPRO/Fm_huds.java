@@ -1,6 +1,7 @@
-package fi.unpsjb.mebene.achud;
+package fi.unpsjb.mebene.achudPRO;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.ActivityNotFoundException;
@@ -13,7 +14,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.text.InputType;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -65,7 +65,7 @@ public class Fm_huds extends Fragment {
     }
 
 
-/*
+
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -73,7 +73,7 @@ public class Fm_huds extends Fragment {
         acCore = ma.acCore;
 
     }
-*/
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

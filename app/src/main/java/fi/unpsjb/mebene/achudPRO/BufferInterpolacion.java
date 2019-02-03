@@ -1,4 +1,4 @@
-package fi.unpsjb.mebene.achud;
+package fi.unpsjb.mebene.achudPRO;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -45,7 +45,11 @@ public class BufferInterpolacion {
 
                 for (int i = 1; (i < (buffer.size() - 1)) ; i++) { //arranco del 2do elemento y freno en el ante ultimo
                     datos = buffer.get(i);
-                    velCorregida = Double.valueOf(datos[MedicionDeEntorno.EDA.VEL.ordinal()]) + (paso * i);
+                    try {
+                        velCorregida = Double.valueOf(datos[MedicionDeEntorno.EDA.VEL.ordinal()]) + (paso * i);
+                    }catch(Exception e){
+                        velCorregida = 0.0;
+                    }
                     datos[MedicionDeEntorno.EDA.VEL.ordinal()] = df.format(velCorregida);
                     buffer.set(i, datos);
                 }

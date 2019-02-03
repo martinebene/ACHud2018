@@ -1,6 +1,7 @@
-package fi.unpsjb.mebene.achud;
+package fi.unpsjb.mebene.achudPRO;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 //import android.app.ProgressDialog;
@@ -14,8 +15,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.StrictMode;
+import android.text.Html;
 import android.text.InputType;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -90,14 +91,14 @@ public class Fm_datos extends Fragment {
 
     }
 
-    /*
+
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         MainActivity ma = (MainActivity) activity;
         acCore = ma.acCore;
     }
-*/
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -365,21 +366,35 @@ public class Fm_datos extends Fragment {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
                 builder.setTitle("Generar HUD");
-                builder.setMessage(
-                                "Datos de origen:\n"+archivoDatosSeleccionado+"\n"
-                                +"del "+dateFormater.format(dateModified)+"\n\n"
-                                +"Tiempo de medicion: "
-                                +arrayValores[MedicionDeEntorno.EDA.CR_HH_MED.ordinal()]+":"
-                                +arrayValores[MedicionDeEntorno.EDA.CR_mm_MED.ordinal()]+":"
-                                +arrayValores[MedicionDeEntorno.EDA.CR_ss_MED.ordinal()]+","
-                                +arrayValores[MedicionDeEntorno.EDA.CR_SSS_MED.ordinal()]+"\n\n"
-                                +"Esquema HUD:\n"+archivoEsquemaSeleccionado+"\n\n"
-                                +"Tipo de salida: "+esquemaHud.getExt()+"\n\n"
-                                +"IRM: "+irm+"\n\n"
-                                +"Delay: "+min_delay_np+":"+seg_delay_np+","+millis_delay_np+"\n\n"
-                                +"Ruta de destino:\n"+rutaDeSalida+"\n\n"
-                                +"Archivo de salida:"
-                );
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                    builder.setMessage(Html.fromHtml("<b>"+"Datos: "+"</b>"+archivoDatosSeleccionado+"<br>"
+                            +"del "+dateFormater.format(dateModified)+"<br>"
+                            +"<b>"+"T medicion: "+"</b>"
+                            +arrayValores[MedicionDeEntorno.EDA.CR_HH_MED.ordinal()]+":"
+                            +arrayValores[MedicionDeEntorno.EDA.CR_mm_MED.ordinal()]+":"
+                            +arrayValores[MedicionDeEntorno.EDA.CR_ss_MED.ordinal()]+","
+                            +arrayValores[MedicionDeEntorno.EDA.CR_SSS_MED.ordinal()]+"<br>"
+                            +"<b>"+"Esquema HUD:<br>"+"</b>"+archivoEsquemaSeleccionado+"<br>"
+                            +"<b>"+"Tipo de salida: "+"</b>"+esquemaHud.getExt()+"<br>"
+                            +"<b>"+"IRM: "+"</b>"+irm+"<br>"
+                            +"<b>"+"Delay: "+"</b>"+min_delay_np+":"+seg_delay_np+","+millis_delay_np+"<br>"
+                            +"<b>"+"Ruta de destino:<br>"+"</b>"+rutaDeSalida+"<br>"
+                            +"<b>"+"Archivo de salida:", Html.FROM_HTML_MODE_LEGACY));
+                } else {
+                    builder.setMessage(Html.fromHtml("<b>"+"Datos: "+"</b>"+archivoDatosSeleccionado+"<br>"
+                            +"del "+dateFormater.format(dateModified)+"<br>"
+                            +"<b>"+"T medicion: "+"</b>"
+                            +arrayValores[MedicionDeEntorno.EDA.CR_HH_MED.ordinal()]+":"
+                            +arrayValores[MedicionDeEntorno.EDA.CR_mm_MED.ordinal()]+":"
+                            +arrayValores[MedicionDeEntorno.EDA.CR_ss_MED.ordinal()]+","
+                            +arrayValores[MedicionDeEntorno.EDA.CR_SSS_MED.ordinal()]+"<br>"
+                            +"<b>"+"Esquema HUD:<br>"+"</b>"+archivoEsquemaSeleccionado+"<br>"
+                            +"<b>"+"Tipo de salida: "+"</b>"+esquemaHud.getExt()+"<br>"
+                            +"<b>"+"IRM: "+"</b>"+irm+"<br>"
+                            +"<b>"+"Delay: "+"</b>"+min_delay_np+":"+seg_delay_np+","+millis_delay_np+"<br>"
+                            +"<b>"+"Ruta de destino:<br>"+"</b>"+rutaDeSalida+"<br>"
+                            +"<b>"+"Archivo de salida:"));
+                }
                 // Set up the input
                 final EditText input = new EditText(getActivity());
                 // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text

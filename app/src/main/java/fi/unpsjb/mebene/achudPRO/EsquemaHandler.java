@@ -1,6 +1,4 @@
-package fi.unpsjb.mebene.achud;
-
-import android.util.Log;
+package fi.unpsjb.mebene.achudPRO;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;

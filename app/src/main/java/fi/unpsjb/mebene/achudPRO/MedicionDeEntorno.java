@@ -1,8 +1,7 @@
-package fi.unpsjb.mebene.achud;
+package fi.unpsjb.mebene.achudPRO;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;

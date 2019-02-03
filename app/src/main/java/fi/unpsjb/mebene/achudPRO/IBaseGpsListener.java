@@ -1,4 +1,4 @@
-package fi.unpsjb.mebene.achud;
+package fi.unpsjb.mebene.achudPRO;
 
 /**
  * Created by Martin on 22/12/2016.

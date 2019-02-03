@@ -1,6 +1,5 @@
-package fi.unpsjb.mebene.achud;
+package fi.unpsjb.mebene.achudPRO;
 
-import android.app.ActivityManager;
 //import android.app.ProgressDialog;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -8,12 +7,8 @@ import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.AsyncTask;
 import android.os.Environment;
-import android.text.Layout;
-import android.util.Log;
-import android.view.View;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.Toast;
+        import android.widget.ProgressBar;
+        import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.DataInputStream;

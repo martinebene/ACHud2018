@@ -1,6 +1,7 @@
-package fi.unpsjb.mebene.achud;
+package fi.unpsjb.mebene.achudPRO;
 
 import android.annotation.TargetApi;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.BroadcastReceiver;
@@ -12,7 +13,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,7 +53,7 @@ public class Fm_cam_generica extends Fragment {
 //        Log.e("tag3434", "entre en onAtach");
     }
 
-    /*
+
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
@@ -61,7 +61,7 @@ public class Fm_cam_generica extends Fragment {
         acCore = ma.acCore;
 
     }
-*/
+
 
     @Override
     public void onResume() {
@@ -90,7 +90,7 @@ public class Fm_cam_generica extends Fragment {
             ibRec.setBackgroundResource(R.mipmap.ic_icono_bsckground_selected);
         }
 
-       eT_Consola.setText(getResources().getString(R.string.msg_captura) +"\n\n\n\n\n"+getResources().getString(R.string.msg_free_app));
+       eT_Consola.setText(getResources().getString(R.string.msg_captura));
 
 
         ibRec.setOnClickListener(new View.OnClickListener() {
@@ -198,6 +198,8 @@ public class Fm_cam_generica extends Fragment {
         public void onReceive(Context context, Intent intent) {
             //if(bcConsolaActivo)
                 eT_Consola.setText(intent.getStringExtra("medicion"));
+
+                /*
                 if (intent.getLongExtra("crono",0)>600000){ //10 minutos
                     acCore.detenerAdquisicion();
                     ibRec.setClickable(true);
@@ -230,11 +232,11 @@ public class Fm_cam_generica extends Fragment {
                             startActivity(marketIntent);
                         }
                     });
-                    */
+                   // / aca habia otro fin de comenet
                         AlertDialog alert = builder.create();
                         alert.show();
                     }
-                }
+                }*/
         }
     };
 
